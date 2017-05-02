@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dind-1 
+  labels:
+    app: dind-1
+spec:
+  containers:
+    - name: dind-run
+      image: markwatsonatx/dind-run:latest
+      securityContext:
+        privileged: true
+      env:
+      - name: DC_REGISTRY_MIRROR
+        value: "http://dregsvc:5000"
+      - name: DC_FILE_BROWSER_PORT
+        value: "33001"
+      - name: DC_PROXY_PORT
+        value: "33002"
+      - name: DC_GIT_REPO
+        value: "https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-changes" 

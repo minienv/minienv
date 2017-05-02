@@ -1,0 +1,13 @@
+# Run the Registry
+docker run -d --restart=always -p 35000:5000 --name v2-mirror -v `pwd`:/var/lib/registry registry:2 /var/lib/registry/config.yml
+
+# Run dind, pull repo, and run docker-compose
+docker run --privileged --name dind -p32375:2375 -p44001:33001 -p44002:33002 -e DC_REGISTRY_MIRROR='http://9.24.7.248:35000' -e DC_FILE_BROWSER_PORT=33001 -e DC_PROXY_PORT=33002 -e DC_GIT_REPO='https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-changes' markwatsonatx/dind-run:latest
+
+# File Browser
+http://localhost:44001
+
+# docker-compose container URLS
+http://port-exposed-through-dockercompose:localhost:44002
+http://33000.localhost:44002
+

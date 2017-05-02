@@ -1,0 +1,21 @@
+minikube addons disable default-storageclass
+
+# Registry
+kubectl create -f ./pv-dreg.yml
+> ssh into kubernetes node and add config.yml to /data
+kubectl create -f ./pvc-dreg.yml
+kubectl create -f ./pod-dreg.yml
+kubectl create -f ./svc-dreg.yml
+
+# Run a single pod & service at runtime for each user/docker-compose sample
+kubectl create -f ./pod-dind-1.yml
+kubectl create -f ./svc-dind-1.yml
+
+# DNS *.minikube.dev points to 192.168.100.99
+
+# File Browser
+http://localhost:NODE_IP_MAPPED_TO_33001
+
+# docker-compose container URLS
+http://port-exposed-through-dockercompose:localhost:NODE_IP_MAPPED_TO_33002
+http://33000.localhost:31018
