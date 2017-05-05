@@ -1,4 +1,5 @@
 minikube addons disable default-storageclass
+minikube start --vm-driver=xhyve
 
 # Registry
 kubectl create -f ./pv-dreg.yml

@@ -6,8 +6,15 @@ metadata:
     app: dind-1
 spec:
   containers:
-    - name: dind-run
+    - name: dcin-dind 
       image: markwatsonatx/dcin-dind:latest
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "250m"
+        limits:
+          memory: "256Mi"
+          cpu: "500m"
       securityContext:
         privileged: true
       env:

@@ -6,8 +6,15 @@ metadata:
     app: dind-2
 spec:
   containers:
-    - name: dind-run
-      image: markwatsonatx/dind-run:latest
+    - name: dcin-dind
+      image: markwatsonatx/dcin-dind:latest
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "250m"
+        limits:
+          memory: "256Mi"
+          cpu: "500m"
       securityContext:
         privileged: true
       env:
@@ -18,4 +25,4 @@ spec:
       - name: DC_PROXY_PORT
         value: "33002"
       - name: DC_GIT_REPO
-        value: "https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-changes" 
+        value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro" 
