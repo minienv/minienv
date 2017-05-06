@@ -1,5 +1,5 @@
 minikube addons disable default-storageclass
-minikube start --vm-driver=xhyve
+minikube start
 
 # Registry
 kubectl create -f ./pv-dreg.yml
@@ -15,8 +15,8 @@ kubectl create -f ./svc-dind-1.yml
 # DNS *.minikube.dev points to 192.168.100.99
 
 # File Browser
-http://localhost:NODE_IP_MAPPED_TO_33001
+http://minikube.dev:NODE_IP_MAPPED_TO_33001
 
 # docker-compose container URLS
-http://port-exposed-through-dockercompose:localhost:NODE_IP_MAPPED_TO_33002
-http://33000.localhost:31018
+http://port-exposed-through-dockercompose:minikube.dev:NODE_IP_MAPPED_TO_33002
+http://33000.minikube.dev:31018
