@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
     - name: dcin-dind 
-      image: markwatsonatx/dcin-dind:latest
+      image: localhost:30005/markwatsonatx/dcin-dind:latest
       resources:
         requests:
           memory: "128Mi"
@@ -18,8 +18,12 @@ spec:
       securityContext:
         privileged: true
       env:
+      - name: NODE_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: spec.nodeName
       - name: DC_REGISTRY_MIRROR
-        value: "http://dregsvc:5000"
+        value: "http://dregsvc2:5000"
       - name: DC_FILE_BROWSER_PORT
         value: "33001"
       - name: DC_PROXY_PORT

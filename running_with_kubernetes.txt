@@ -6,7 +6,8 @@ kubectl create -f ./pv-dreg.yml
 > ssh into kubernetes node and add config.yml to /data
 kubectl create -f ./pvc-dreg.yml
 kubectl create -f ./pod-dreg.yml
-kubectl create -f ./svc-dreg.yml
+kubectl create -f ./svc-dreg-clusterip.yml
+kubectl create -f ./svc-dreg-nodeport.yml
 
 # Run a single pod & service at runtime for each user/docker-compose sample
 kubectl create -f ./pod-dind-1.yml
