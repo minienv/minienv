@@ -1,0 +1,36 @@
+apiVersion: apps/v1beta1
+kind: Deployment 
+metadata:
+  name: dind-2-deployment 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dind-2
+    spec:
+      containers:
+        - name: dcin-dind 
+          image: localhost:30005/markwatsonatx/dcin-dind:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          securityContext:
+            privileged: true
+          env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: DC_REGISTRY_MIRROR
+            value: "http://dregsvc2:5000"
+          - name: DC_FILE_BROWSER_PORT
+            value: "33001"
+          - name: DC_PROXY_PORT
+            value: "33002"
+          - name: DC_GIT_REPO
+            value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro"
