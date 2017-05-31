@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dind-2-svc 
+  name: example-1-svc 
 spec:
   selector:
-    app: dind-2
+    app: example-1
   ports:
     - protocol: TCP
       port: 33001
-      name: "file-browser"
+      name: "editor"
     - protocol: TCP
       port: 33002
       name: "proxy"

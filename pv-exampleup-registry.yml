@@ -1,9 +1,9 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: dreg-pv
+  name: exampleup-registry-pv
   labels:
-    id: "dreg"
+    id: "exampleup-registry"
 spec:
   capacity:
     storage: 10Gi

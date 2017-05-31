@@ -11,7 +11,8 @@ from compose.config.environment import Environment
 
 from compose.cli.docker_client import docker_client
 from compose.const import API_VERSIONS, COMPOSEFILE_V3_0
-
+from compose.cli.log_printer import build_log_presenters
+from compose.cli.log_printer import LogPrinter
 
 def ps_(project):
     """
@@ -90,9 +91,39 @@ def project_config(path):
     norm_path = normpath(path)
     return get_config_from_options(norm_path, dict())
 
+def list_containers(containers):
+    return ", ".join(c.name for c in containers)
+
+def log_printer_from_project(
+    project,
+    containers,
+    monochrome,
+    log_args,
+    cascade_stop=False,
+    event_stream=None,
+):
+    return LogPrinter(
+        containers,
+        build_log_presenters(project.service_names, monochrome),
+        event_stream or project.events(),
+        cascade_stop=cascade_stop,
+        log_args=log_args)
 
 p = get_project('/Users/markwatson/dev/github/markwatsonatx/tutorial-rethinkdb-nodejs-changes/')
 for svc in p.service_names:
      ports = p.get_service(svc).options["ports"]
      for port in ports:
         print(port.published)
+
+containers = p.containers(stopped=True)
+log_args = {
+    'follow': True,
+    'timestamps': True
+}
+print("Attaching to", list_containers(containers))
+log_printer_from_project(
+    p,
+    containers,
+    True,
+    log_args,
+    event_stream=p.events()).run()

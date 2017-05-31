@@ -1,0 +1,6 @@
+Web
+1. Verify repo exists and has docker-compose file (later)
+2. Extract docker-compose port (fake for now)s
+3. Save deployment (set editor and proxy ports based on #2)
+4. Save service (get nodePorts from response)
+5. Get node IP address of deployment (#3) - api/pods/ - need to get domain name for node??

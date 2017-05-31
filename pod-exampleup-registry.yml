@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: exampleup-registry
+  labels:
+    app: exampleup-registry
+spec:
+  volumes:
+    - name: exampleup-registry-storage
+      persistentVolumeClaim:
+       claimName: exampleup-registry-pvc
+  containers:
+    - name: exampleup-registry
+      image: markwatsonatx/exampleup-registry:latest 
+      volumeMounts:
+      - mountPath: "/var/lib/registry"
+        name: exampleup-registry-storage
+      ports:
+      - containerPort: 5000

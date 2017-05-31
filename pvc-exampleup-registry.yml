@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: dreg-pvc
+  name: exampleup-registry-pvc
 spec:
   accessModes:
     - ReadWriteOnce

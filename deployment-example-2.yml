@@ -1,17 +1,17 @@
 apiVersion: apps/v1beta1
 kind: Deployment 
 metadata:
-  name: dind-2-deployment 
+  name: example-2-deployment 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: dind-2
+        app: example-2
     spec:
       containers:
-        - name: dcin-dind 
-          image: localhost:30005/markwatsonatx/dcin-dind:latest
+        - name: exampleup 
+          image: localhost:30005/markwatsonatx/exampleup:latest
           resources:
             requests:
               memory: "128Mi"
@@ -26,11 +26,11 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-          - name: DC_REGISTRY_MIRROR
-            value: "http://dregsvc2:5000"
-          - name: DC_FILE_BROWSER_PORT
+          - name: EXUP_REGISTRY_MIRROR
+            value: "http://exampleup-registry-svc2:5000"
+          - name: EXUP_EDITOR_PORT
             value: "33001"
-          - name: DC_PROXY_PORT
+          - name: EXUP_PROXY_PORT
             value: "33002"
-          - name: DC_GIT_REPO
+          - name: EXUP_GIT_REPO
             value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro"

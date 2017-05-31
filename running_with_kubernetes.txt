@@ -2,16 +2,15 @@ minikube addons disable default-storageclass
 minikube start
 
 # Registry
-kubectl create -f ./pv-dreg.yml
-> ssh into kubernetes node and add config.yml to /data
-kubectl create -f ./pvc-dreg.yml
-kubectl create -f ./pod-dreg.yml
-kubectl create -f ./svc-dreg-clusterip.yml
-kubectl create -f ./svc-dreg-nodeport.yml
+kubectl create -f ./pv-exampleup-registry.yml
+kubectl create -f ./pvc-exampleup-regsitry.yml
+kubectl create -f ./pod-exampleup-registry.yml
+kubectl create -f ./svc-exampleup-regsitry-clusterip.yml
+kubectl create -f ./svc-exampleup-registry-nodeport.yml
 
-# Run a single pod & service at runtime for each user/docker-compose sample
-kubectl create -f ./pod-dind-1.yml
-kubectl create -f ./svc-dind-1.yml
+# Run a single deployment & service at runtime for each user/docker-compose sample
+kubectl create -f ./deployment-example-1.yml
+kubectl create -f ./svc-example-1.yml
 
 # DNS *.minikube.dev points to 192.168.100.99
 
