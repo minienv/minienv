@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment 
+metadata:
+  name: exampleup-web-deployment 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: exampleup-web
+    spec:
+      containers:
+        - name: exampleup-web
+          image: localhost:30005/markwatsonatx/exampleup-web:latest
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+          env:
+          - name: KUBERNETES_TOKEN_PATH
+            value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+          - name: EXUP_NODE_HOST_NAME
+            value: "minikube.dev"

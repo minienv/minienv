@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: extensions/v1beta1
 kind: Deployment 
 metadata:
   name: exampleup-web-deployment 
@@ -22,3 +22,5 @@ spec:
           env:
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+          - name: EXUP_NODE_HOST_NAME
+            value: "bxkube.dev"
