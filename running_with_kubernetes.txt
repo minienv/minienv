@@ -1,12 +1,8 @@
-minikube addons disable default-storageclass
 minikube start
 
 # Registry
-kubectl create -f ./pv-exampleup-registry.yml
-kubectl create -f ./pvc-exampleup-regsitry.yml
 kubectl create -f ./pod-exampleup-registry.yml
-kubectl create -f ./svc-exampleup-regsitry-clusterip.yml
-kubectl create -f ./svc-exampleup-registry-nodeport.yml
+kubectl create -f ./svc-exampleup-registry.yml
 
 # Run a single deployment & service at runtime for each user/docker-compose sample
 kubectl create -f ./deployment-example-1.yml

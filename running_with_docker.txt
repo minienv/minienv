@@ -1,8 +1,8 @@
 # Run the Registry
-docker run -d -p 35000:5000 -v `pwd`:/var/lib/registry markwatsonatx/exampleup-registry:latest
+docker run -d -p 30005:5000 -v `pwd`:/var/lib/registry markwatsonatx/exampleup-registry:latest
 
 # Run exampleup, pull repo, and run docker-compose
-docker run --privileged --name exampleup -p32375:2375 -p44001:33001 -p44002:33002 -e EXUP_REGISTRY_MIRROR='http://9.24.7.248:35000' -e EXUP_FILE_BROWSER_PORT=33001 -e EXUP_PROXY_PORT=33002 -e EXUP_GIT_REPO='https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-changes' markwatsonatx/exampleup:latest
+docker run --privileged --name exampleup -p32375:2375 -p44001:33001 -p44002:33002 -e EXUP_REGISTRY_MIRROR='http://9.24.7.248:30005' -e EXUP_LOG_PORT=33001 -e EXUP_EDITOR_PORT=33002 -e EXUP_PROXY_PORT=33003 -e EXUP_GIT_REPO='https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-changes' markwatsonatx/exampleup:latest
 
 # File Browser
 http://localhost:44001
