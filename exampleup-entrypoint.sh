@@ -1,5 +1,5 @@
 #!/bin/sh
-export EXUP_REGISTRY_MIRROR=http://$NODE_NAME:30005
+export EXUP_REGISTRY_MIRROR=http://$NODE_NAME:5000
 /usr/local/bin/dockerd-entrypoint.sh --storage-driver=$EXUP_STORAGE_DRIVER --registry-mirror=$EXUP_REGISTRY_MIRROR &
 git clone $EXUP_GIT_REPO /dc
 cd /dc

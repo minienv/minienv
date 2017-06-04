@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: exampleup-web
-          image: localhost:30005/markwatsonatx/exampleup-web:latest
+          image: localhost:5000/markwatsonatx/exampleup-web:latest
           resources:
             requests:
               memory: "128Mi"

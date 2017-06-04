@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: exampleup-registry-daemonset
+  name: exampleup-registry-daemonset
+spec:
+  template:
+    metadata:
+      labels:
+        app: exampleup-registry
+    spec:
+      hostNetwork: true
+      containers:
+      - name: exampleup-registry
+        image: markwatsonatx/exampleup-registry:latest      
+        ports:
+        - name: registry
+          containerPort: 5000
+          hostPort: 5000
