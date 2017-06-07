@@ -109,21 +109,18 @@ def log_printer_from_project(
         cascade_stop=cascade_stop,
         log_args=log_args)
 
-p = get_project('/Users/markwatson/dev/github/markwatsonatx/tutorial-rethinkdb-nodejs-changes/')
+p = get_project('/Users/markwatson/dev/github/markwatsonatx/tutorial-polymer-shop-hoodie-cloudant/')
 for svc in p.service_names:
      ports = p.get_service(svc).options["ports"]
      for port in ports:
         print(port.published)
-
-containers = p.containers(stopped=True)
-log_args = {
-    'follow': True,
-    'timestamps': True
-}
-print("Attaching to", list_containers(containers))
-log_printer_from_project(
-    p,
-    containers,
-    True,
-    log_args,
-    event_stream=p.events()).run()
+     if "labels" in p.get_service(svc).options.keys():
+        labels = p.get_service(svc).options["labels"]
+        for label in labels:
+           key = "com.exampleup.proxy.path."
+           i = label.find(key)
+           if i >= 0:
+              colonIndex = label.find(':',len(key))
+              if colonIndex >= 0:
+	         print("PORT=" + label[len(key):colonIndex])
+                 print("PATH=" + label[colonIndex+1:])
