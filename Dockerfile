@@ -1,11 +1,10 @@
 FROM docker:dind
 
-RUN apk update
-RUN apk add bash
-RUN apk add py-pip
-RUN pip install docker-compose
-RUN apk add git
+RUN apk add --no-cache bash \
+    py-pip \
+    git \
+  && pip install docker-compose
 
-ADD exampleup-entrypoint.sh /
+COPY exampleup-entrypoint.sh /
 
 ENTRYPOINT ["/exampleup-entrypoint.sh"]
