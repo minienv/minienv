@@ -24,3 +24,7 @@ spec:
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
           - name: EXUP_NODE_HOST_NAME
             value: "minikube.dev"
+          - name: EXUP_NAMESPACE
+            value: "exampleup"
+          - name: EXUP_STORAGE_DRIVER
+            value: "vfs"

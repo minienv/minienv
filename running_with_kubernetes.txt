@@ -1,12 +1,18 @@
 minikube start
 
+# Namespacey
+kubectl create -f ./namespace-exampleup.yml
+
 # Registry
-kubectl create -f ./pod-exampleup-registry.yml
-kubectl create -f ./svc-exampleup-registry.yml
+kubectl create -f ./daemonset-exampleup-registry.yml
+
+# Web
+kubectl create -f ./deployment-exampleup-web-minikube.yml
+kubectl create -f ./service-exampleup-web.yml
 
 # Run a single deployment & service at runtime for each user/docker-compose sample
-kubectl create -f ./deployment-example-1.yml
-kubectl create -f ./svc-example-1.yml
+kubectl create -f ./deployment-example-1.yml --namespace=exampleup
+kubectl create -f ./svc-example-1.yml --namespace=exampleup
 
 # DNS *.minikube.dev points to 192.168.100.99
 
