@@ -22,6 +22,6 @@ services:
     environment:
       - EXUP_TARGET_HOST=dind
     extra_hosts:
-      - "dind:${NODE_NAME}"
+      - "dind:${DIND_IP_ADDRESS}"
     ports:
       - "${EXUP_PROXY_PORT}:80"

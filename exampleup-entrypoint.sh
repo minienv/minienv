@@ -1,15 +1,15 @@
 #!/bin/sh
 
 # Start Docker
-storage_driver=$EXUP_STORAGE_DRIVER
+storage_driver=${EXUP_STORAGE_DRIVER}
 if [[ -z  ${storage_driver} ]]; then
     storage_driver="vfs"
 fi
 if [[ ! -z ${NODE_NAME} ]]; then
     registryMirror="http://$NODE_NAME:5000"
-    /usr/local/bin/dockerd-entrypoint.sh --storage-driver=$storage_driver --registry-mirror=$registryMirror &
+    /usr/local/bin/dockerd-entrypoint.sh --storage-driver=${storage_driver} --registry-mirror=${registryMirror} &
 else
-    /usr/local/bin/dockerd-entrypoint.sh --storage-driver=$storage_driver &
+    /usr/local/bin/dockerd-entrypoint.sh --storage-driver=${storage_driver} &
 fi
 
 # Wait for Docker to start
@@ -29,5 +29,7 @@ docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 
 # Clone repo
-git clone $EXUP_GIT_REPO /dc
+rm -rf /dc
+git clone ${EXUP_GIT_REPO} /dc
+export DIND_IP_ADDRESS="$(ip route show | grep docker0 | awk '{print $5}')"
 docker-compose -f ./dc/docker-compose.yml -f ./exampleup-docker-compose.yml up --force-recreate

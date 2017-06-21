@@ -54,8 +54,13 @@ def log_printer_from_project(
         log_args=log_args,
         output=writer)
 
-p = get_project('/Users/markwatson/dev/github/markwatsonatx/tutorial-rethinkdb-nodejs-changes/')
+#p = get_project('/Users/markwatson/dev/github/markwatsonatx/tutorial-rethinkdb-nodejs-changes/')
+p = get_project('/Users/markwatson/dev/github/markwatsonatx/exampleup/')
 containers = p.containers(stopped=True)
+while len(containers) == 0:
+   time.sleep(5)
+   containers = p.containers(stopped=True)
+print(containers)
 log_args = {
     'follow': True,
     'timestamps': True
