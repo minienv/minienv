@@ -1,0 +1,14 @@
+version: '2'
+services:
+  exampleup:
+    image: markwatsonatx/exampleup:latest
+    privileged: true
+    ports:
+      - "33001:33001"
+      - "33002:33002"
+      - "33003:33003"
+    environment:
+      - EXUP_LOG_PORT=33001
+      - EXUP_EDITOR_PORT=33002
+      - EXUP_PROXY_PORT=33003
+      - EXUP_GIT_REPO=https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps

@@ -1,0 +1,27 @@
+version: '2'
+services:
+  log:
+    image: markwatsonatx/exampleup-log:latest
+    volumes:
+      - ./:/dc
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - EXUP_DIR=/dc
+    ports:
+      - "${EXUP_LOG_PORT}:8080"
+  editor:
+    image: markwatsonatx/exampleup-editor:latest
+    volumes:
+      - ./:/dc
+    environment:
+      - EXUP_DIR=/dc
+    ports:
+      - "${EXUP_EDITOR_PORT}:80"
+  proxy:
+    image: markwatsonatx/exampleup-proxy:latest
+    environment:
+      - EXUP_TARGET_HOST=dind
+    extra_hosts:
+      - "dind:${NODE_NAME}"
+    ports:
+      - "${EXUP_PROXY_PORT}:80"

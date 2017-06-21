@@ -1,15 +1,33 @@
 #!/bin/sh
-export EXUP_REGISTRY_MIRROR=http://$NODE_NAME:5000
-/usr/local/bin/dockerd-entrypoint.sh --storage-driver=$EXUP_STORAGE_DRIVER --registry-mirror=$EXUP_REGISTRY_MIRROR &
-docker pull markwatsonatx/exampleup-log:latest
-docker pull markwatsonatx/exampleup-editor:latest
-docker pull markwatsonatx/exampleup-proxy:latest
+
+# Start Docker
+storage_driver=$EXUP_STORAGE_DRIVER
+if [[ -z  ${storage_driver} ]]; then
+    storage_driver="vfs"
+fi
+if [[ ! -z ${NODE_NAME} ]]; then
+    registryMirror="http://$NODE_NAME:5000"
+    /usr/local/bin/dockerd-entrypoint.sh --storage-driver=$storage_driver --registry-mirror=$registryMirror &
+else
+    /usr/local/bin/dockerd-entrypoint.sh --storage-driver=$storage_driver &
+fi
+
+# Wait for Docker to start
+docker info > /dev/null 2>&1
+code=$?
+while [ ${code} -gt 0 ]; do
+    echo "$(date) - Docker exited with code $code. Waiting for docker to start..."
+    sleep 3
+    docker info > /dev/null 2>&1
+    code=$?
+done
+
+# Stop all containers
 docker stop $(docker ps -aq)
+
+# Remove all containers
 docker rm $(docker ps -aq)
+
+# Clone repo
 git clone $EXUP_GIT_REPO /dc
-cd /dc
-docker-compose up -d --force-recreate
-docker run -d -e EXUP_DIR="/dc" -v /var/run/docker.sock:/var/run/docker.sock -v /dc:/dc -p$EXUP_LOG_PORT:8080 markwatsonatx/exampleup-log:latest
-docker run -d -e EXUP_DIR="/dc" -v /dc:/dc -p$EXUP_EDITOR_PORT:80 markwatsonatx/exampleup-editor:latest
-docker run -d -e EXUP_TARGET_HOST="dind" --add-host=dind:`ip route show | grep docker0 | awk '{print $5}'` -p$EXUP_PROXY_PORT:80 markwatsonatx/exampleup-proxy:latest
-while true; do sleep 1000; done
+docker-compose -f ./dc/docker-compose.yml -f ./exampleup-docker-compose.yml up --force-recreate

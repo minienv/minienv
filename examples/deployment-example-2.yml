@@ -26,8 +26,6 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-          - name: EXUP_REGISTRY_MIRROR
-            value: "http://exampleup-registry-svc2:5000"
           - name: EXUP_EDITOR_PORT
             value: "33001"
           - name: EXUP_PROXY_PORT
