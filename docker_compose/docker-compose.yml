@@ -11,4 +11,4 @@ services:
       - EXUP_LOG_PORT=33001
       - EXUP_EDITOR_PORT=33002
       - EXUP_PROXY_PORT=33003
-      - EXUP_GIT_REPO=https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps
+      - EXUP_GIT_REPO=${EXUP_GIT_REPO}

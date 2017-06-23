@@ -1,0 +1,17 @@
+# Init or join a swarm
+docker swarm init
+
+# Create registry service
+docker service create --name exampleup-registry --publish 5000:5000 markwatsonatx/exampleup-registry:latest
+
+# Run exampleup
+# Set git repo and run docker-compose up with name (-p)
+EXUP_GIT_REPO=<GIT_REPO> docker-compose -p <NAME> up
+EXUP_GIT_REPO=https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps docker-compose -p example1 up
+
+# Access log and editor with assigned port
+http://localhost:DYNAMIC_PORT
+
+# docker-compose container URLS
+http://port-exposed-through-dockercompose.localhost:DYNAMIC_PORT
+http://33000.localhost:32830

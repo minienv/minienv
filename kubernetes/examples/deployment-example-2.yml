@@ -1,24 +1,24 @@
 apiVersion: apps/v1beta1
 kind: Deployment 
 metadata:
-  name: example-1-deployment 
+  name: example-2-deployment 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: example-1
+        app: example-2
     spec:
       containers:
         - name: exampleup 
-          image: localhost:30005/markwatsonatx/exampleup:latest
+          image: localhost:5000/markwatsonatx/exampleup:latest
           resources:
             requests:
               memory: "128Mi"
               cpu: "250m"
             limits:
-              memory: "256Mi"
-              cpu: "500m"
+              memory: "1024Mi"
+              cpu: "1000m"
           securityContext:
             privileged: true
           env:
@@ -26,9 +26,13 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
-          - name: EXUP_EDITOR_PORT
+          - name: EXUP_STORAGE_DRIVER
+            value: "vfs"
+          - name: EXUP_LOG_PORT
             value: "33001"
-          - name: EXUP_PROXY_PORT
+          - name: EXUP_EDITOR_PORT
             value: "33002"
+          - name: EXUP_PROXY_PORT
+            value: "33003"
           - name: EXUP_GIT_REPO
-            value: "https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-changes" 
+            value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro"
