@@ -3,12 +3,16 @@ services:
   exampleup:
     image: 127.0.0.1:5000/markwatsonatx/exampleup:latest
     privileged: true
+    volumes:
+      - $volumeName:/var/lib/docker
     ports:
-      - "33001"
-      - "33002"
-      - "33003"
+      - "$logPort"
+      - "$editorPort"
+      - "$proxyPort"
     environment:
-      - EXUP_LOG_PORT=33001
-      - EXUP_EDITOR_PORT=33002
-      - EXUP_PROXY_PORT=33003
-      - EXUP_GIT_REPO=${EXUP_GIT_REPO}
+      - EXUP_LOG_PORT=$logPort
+      - EXUP_EDITOR_PORT=$editorPort
+      - EXUP_PROXY_PORT=$proxyPort
+      - EXUP_GIT_REPO=$gitRepo
+volumes:
+  $volumeName:
