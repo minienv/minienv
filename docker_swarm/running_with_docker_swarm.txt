@@ -1,8 +1,8 @@
 # Init or join a swarm
 docker swarm init
 
-# Create registry service
-docker service create --name exampleup-registry --mode global --publish 5000:5000 markwatsonatx/exampleup-registry:latest
+# Start the registry, API, and web
+docker stack deploy -c docker-stack.yml exampleup
 
 # Create peristent volume
 docker volume create --name example1-volume

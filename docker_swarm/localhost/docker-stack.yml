@@ -1,0 +1,37 @@
+version: '3'
+services:
+  exampleup-registry:
+    image: markwatsonatx/exampleup-registry:latest
+    networks:
+      - exampleup-network
+    deploy:
+      mode: global
+    ports:
+      - "5000:5000"
+  exampleup-api:
+    image: markwatsonatx/exampleup-api-swarm:latest
+    depends_on:
+      - exampleup-registry
+    networks:
+      - exampleup-network
+    deploy:
+      mode: global
+    ports:
+      - "31112:8080"
+    environment:
+      - EXUP_ALLOW_ORIGIN=http://localhost:31111
+      - EXUP_NODE_HOST_NAME=localhost
+      - EXUP_STORAGE_DRIVER=aufs
+  exampleup-web:
+    image: markwatsonatx/exampleup-web:latest
+    depends_on:
+      - exampleup-registry
+      - exampleup-api
+    networks:
+      - exampleup-network
+    ports:
+      - "31111:80"
+    environment:
+      - EXUP_API_URL=http://localhost:31112
+networks:
+  exampleup-network:

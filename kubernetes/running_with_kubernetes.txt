@@ -1,13 +1,17 @@
 minikube start
 
-# Namespacey
+# Namespace
 kubectl create -f ./namespace-exampleup.yml
 
 # Registry
 kubectl create -f ./daemonset-exampleup-registry.yml
 
+# API
+kubectl create -f ./deployment-exampleup-api.yml
+kubectl create -f ./service-exampleup-api.yml
+
 # Web
-kubectl create -f ./deployment-exampleup-web-minikube.yml
+kubectl create -f ./deployment-exampleup-web.yml
 kubectl create -f ./service-exampleup-web.yml
 
 # Run a single deployment & service at runtime for each user/docker-compose sample
