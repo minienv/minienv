@@ -6,6 +6,7 @@ RUN apk add --no-cache bash \
   && pip install docker-compose
 
 COPY exampleup-entrypoint.sh \
-     exampleup-docker-compose.yml /
+     exampleup-docker-compose-v2.yml \
+     exampleup-docker-compose-v3.yml /
 
 ENTRYPOINT ["/exampleup-entrypoint.sh"]

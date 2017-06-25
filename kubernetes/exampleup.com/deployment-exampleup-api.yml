@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment 
 metadata:
-  name: exampleup-web-deployment 
+  name: exampleup-api-deployment 
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: exampleup-web
+        app: exampleup-api
     spec:
       containers:
-        - name: exampleup-web
-          image: localhost:5000/markwatsonatx/exampleup-web:latest
+        - name: exampleup-api
+          image: localhost:5000/markwatsonatx/exampleup-api-kube:latest
           resources:
             requests:
               memory: "128Mi"
@@ -20,10 +20,12 @@ spec:
               memory: "256Mi"
               cpu: "500m"
           env:
+          - name: EXUP_ALLOW_ORIGIN
+            value: "http://exampleup.com:31111"
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
           - name: EXUP_NODE_HOST_NAME
-            value: "bxkube.dev"
+            value: "exampleup.com"
           - name: EXUP_NAMESPACE
             value: "exampleup"
           - name: EXUP_STORAGE_DRIVER

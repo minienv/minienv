@@ -8,6 +8,7 @@ services:
       - "33002:33002"
       - "33003:33003"
     environment:
+      - EXUP_ALLOW_ORIGIN=http://localhost:8080
       - EXUP_LOG_PORT=33001
       - EXUP_EDITOR_PORT=33002
       - EXUP_PROXY_PORT=33003
