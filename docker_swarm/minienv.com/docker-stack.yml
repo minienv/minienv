@@ -21,8 +21,8 @@ services:
     ports:
       - "31112:8080"
     environment:
-      - EXUP_ALLOW_ORIGIN=http://localhost:31111
-      - EXUP_NODE_HOST_NAME=localhost
+      - EXUP_ALLOW_ORIGIN=http://minienv.com:31111
+      - EXUP_NODE_HOST_NAME=minienv.com
       - EXUP_STORAGE_DRIVER=aufs
   exampleup-web:
     image: markwatsonatx/exampleup-web:latest
@@ -34,6 +34,6 @@ services:
     ports:
       - "31111:80"
     environment:
-      - EXUP_API_URL=http://localhost:31112
+      - EXUP_API_URL=http://minienv.com:31112
 networks:
   exampleup-network:

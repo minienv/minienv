@@ -1,0 +1,24 @@
+exampleup-registry:
+  image: markwatsonatx/exampleup-registry:latest
+  roles:
+    - global
+  ports:
+    - "5000:5000"
+exampleup-api:
+  image: markwatsonatx/exampleup-api-swarm:latest
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  roles:
+    - global
+  ports:
+    - "31112:8080"
+  environment:
+    - EXUP_ALLOW_ORIGIN=http://minienv.com:31111
+    - EXUP_NODE_HOST_NAME=minienv.com
+    - EXUP_STORAGE_DRIVER=aufs
+exampleup-web:
+  image: markwatsonatx/exampleup-web:latest
+  ports:
+    - "31111:80"
+  environment:
+    - EXUP_API_URL=http://minienv.com:31112

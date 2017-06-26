@@ -1,0 +1,1 @@
+docker-cloud does not currently work as swarm api container installs later version of docker compose than is available on docker cloud
