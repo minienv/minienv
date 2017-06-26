@@ -2,3 +2,7 @@ Web
 1. Do not allow privileged in docker-compose file
 2. Verify repo exists and has docker-compose file
 3. Get domain name of node
+
+Docker Swarm
+1. Verify volumes are working
+2. NodeName??
