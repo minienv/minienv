@@ -2,10 +2,7 @@
 docker swarm init
 
 # Start the registry, API, and web
-docker stack deploy -c docker-stack.yml exampleup
-
-# Create peristent volume
-docker volume create --name example1-volume
+docker stack deploy -c docker-stack.yml exampleup-stack
 
 # Run exampleup
 docker-compose -f docker-compose-example1.yml -p example1 up

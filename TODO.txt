@@ -1,8 +1,7 @@
 Web
 1. Do not allow privileged in docker-compose file
-2. Verify repo exists and has docker-compose file
-3. Get domain name of node
+2. Get domain name of node
+3. Volume for registry cache
 
 Docker Swarm
-1. Verify volumes are working
-2. NodeName??
+1. NodeName??

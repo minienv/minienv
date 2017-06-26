@@ -31,6 +31,11 @@ docker rm $(docker ps -aq)
 # Clone repo
 rm -rf /dc
 git clone ${EXUP_GIT_REPO} /dc
+if [ ! -f /dc/docker-compose.yml ]; then
+    if [ -f /dc/docker-compose.yaml ]; then
+        mv /dc/docker-compose.yaml /dc/docker-compose.yml
+    fi
+fi
 export DIND_IP_ADDRESS="$(ip route show | grep docker0 | awk '{print $5}')"
 version=$(sed -n "s/^.*version.*\:.*\([0-9]\).*$/\1/p" /dc/docker-compose.yml)
 mv ./exampleup-docker-compose-v${version}.yml ./exampleup-docker-compose.yml
