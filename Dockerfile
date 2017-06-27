@@ -5,8 +5,8 @@ RUN apk add --no-cache bash \
     git \
   && pip install docker-compose
 
-COPY exampleup-entrypoint.sh \
-     exampleup-docker-compose-v2.yml \
-     exampleup-docker-compose-v3.yml /
+COPY minienv-entrypoint.sh \
+     minienv-docker-compose-v2.yml \
+     minienv-docker-compose-v3.yml /
 
-ENTRYPOINT ["/exampleup-entrypoint.sh"]
+ENTRYPOINT ["/minienv-entrypoint.sh"]

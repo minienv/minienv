@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment 
 metadata:
-  name: exampleup-api-deployment 
+  name: minienv-api-deployment
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: exampleup-api
+        app: minienv-api
     spec:
       containers:
-        - name: exampleup-api
-          image: localhost:5000/markwatsonatx/exampleup-api-kube:latest
+        - name: minienv-api
+          image: localhost:5000/markwatsonatx/minienv-api-kube:latest
           resources:
             requests:
               memory: "128Mi"
@@ -27,6 +27,6 @@ spec:
           - name: EXUP_NODE_HOST_NAME
             value: "minikube.dev"
           - name: EXUP_NAMESPACE
-            value: "exampleup"
+            value: "minienv"
           - name: EXUP_STORAGE_DRIVER
             value: "aufs"

@@ -1,19 +1,19 @@
 version: '3'
 services:
-  exampleup-registry:
-    image: markwatsonatx/exampleup-registry:latest
+  minienv-registry:
+    image: markwatsonatx/minienv-registry:latest
     networks:
-      - exampleup-network
+      - minienv-network
     deploy:
       mode: global
     ports:
       - "5000:5000"
-  exampleup-api:
-    image: markwatsonatx/exampleup-api-swarm:latest
+  minienv-api:
+    image: markwatsonatx/minienv-api-swarm:latest
     depends_on:
-      - exampleup-registry
+      - minienv-registry
     networks:
-      - exampleup-network
+      - minienv-network
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
@@ -21,19 +21,19 @@ services:
     ports:
       - "31112:8080"
     environment:
-      - EXUP_ALLOW_ORIGIN=http://minienv.com:31111
-      - EXUP_NODE_HOST_NAME=minienv.com
+      - EXUP_ALLOW_ORIGIN=http://minienvup.com:31111
+      - EXUP_NODE_HOST_NAME=minienvup.com
       - EXUP_STORAGE_DRIVER=aufs
-  exampleup-web:
-    image: markwatsonatx/exampleup-web:latest
+  minienv-web:
+    image: markwatsonatx/minienv-web:latest
     depends_on:
-      - exampleup-registry
-      - exampleup-api
+      - minienv-registry
+      - minienv-api
     networks:
-      - exampleup-network
+      - minienv-network
     ports:
       - "31111:80"
     environment:
-      - EXUP_API_URL=http://minienv.com:31112
+      - EXUP_API_URL=http://minienvup.com:31112
 networks:
-  exampleup-network:
+  minienv-network:

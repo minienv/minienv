@@ -1,17 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment 
 metadata:
-  name: exampleup-web-deployment 
+  name: minienv-web-deployment
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: exampleup-web
+        app: minienv-web
     spec:
       containers:
-        - name: exampleup-web
-          image: localhost:5000/markwatsonatx/exampleup-web:latest
+        - name: minienv-web
+          image: localhost:5000/markwatsonatx/minienv-web:latest
           resources:
             requests:
               memory: "128Mi"
@@ -21,4 +21,4 @@ spec:
               cpu: "500m"
           env:
           - name: EXUP_API_URL
-            value: "http://exampleup.com:31112"
+            value: "http://minienvup.com:31112"

@@ -10,8 +10,8 @@ spec:
         app: example-1
     spec:
       containers:
-        - name: exampleup 
-          image: localhost:5000/markwatsonatx/exampleup:latest
+        - name: minienv
+          image: localhost:5000/markwatsonatx/minienv:latest
           resources:
             requests:
               memory: "128Mi"

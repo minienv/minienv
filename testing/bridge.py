@@ -114,13 +114,3 @@ for svc in p.service_names:
      ports = p.get_service(svc).options["ports"]
      for port in ports:
         print(port.published)
-     if "labels" in p.get_service(svc).options.keys():
-        labels = p.get_service(svc).options["labels"]
-        for label in labels:
-           key = "com.exampleup.proxy.path."
-           i = label.find(key)
-           if i >= 0:
-              colonIndex = label.find(':',len(key))
-              if colonIndex >= 0:
-	         print("PORT=" + label[len(key):colonIndex])
-                 print("PATH=" + label[colonIndex+1:])

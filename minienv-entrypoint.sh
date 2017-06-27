@@ -38,5 +38,5 @@ if [ ! -f /dc/docker-compose.yml ]; then
 fi
 export DIND_IP_ADDRESS="$(ip route show | grep docker0 | awk '{print $5}')"
 version=$(sed -n "s/^.*version.*\:.*\([0-9]\).*$/\1/p" /dc/docker-compose.yml)
-mv ./exampleup-docker-compose-v${version}.yml ./exampleup-docker-compose.yml
-docker-compose -f ./dc/docker-compose.yml -f ./exampleup-docker-compose.yml up --force-recreate
+mv ./minienv-docker-compose-v${version}.yml ./minienv-docker-compose.yml
+docker-compose -f ./dc/docker-compose.yml -f ./minienv-docker-compose.yml up --force-recreate

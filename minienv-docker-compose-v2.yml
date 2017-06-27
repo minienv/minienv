@@ -1,7 +1,7 @@
-version: '3'
+version: '2'
 services:
   log:
-    image: markwatsonatx/exampleup-log:latest
+    image: markwatsonatx/minienv-log:latest
     volumes:
       - ./:/dc
       - /var/run/docker.sock:/var/run/docker.sock
@@ -11,7 +11,7 @@ services:
     ports:
       - "${EXUP_LOG_PORT}:8080"
   editor:
-    image: markwatsonatx/exampleup-editor:latest
+    image: markwatsonatx/minienv-editor:latest
     volumes:
       - ./:/dc
     environment:
@@ -20,7 +20,7 @@ services:
     ports:
       - "${EXUP_EDITOR_PORT}:80"
   proxy:
-    image: markwatsonatx/exampleup-proxy:latest
+    image: markwatsonatx/minienv-proxy:latest
     environment:
       - EXUP_TARGET_HOST=dind
       - EXUP_ALLOW_ORIGIN=${EXUP_ALLOW_ORIGIN}

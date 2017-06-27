@@ -1,4 +1,4 @@
-# Run exampleup
+# Run minienv
 # Set git repo and run docker-compose up with optional name (-p)
 EXUP_GIT_REPO=<GIT_REPO> docker-compose -p <NAME> up
 EXUP_GIT_REPO=https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps docker-compose -p example1 up

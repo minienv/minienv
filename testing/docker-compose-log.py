@@ -55,7 +55,7 @@ def log_printer_from_project(
         output=writer)
 
 #p = get_project('/Users/markwatson/dev/github/markwatsonatx/tutorial-rethinkdb-nodejs-changes/')
-p = get_project('/Users/markwatson/dev/github/markwatsonatx/exampleup/')
+p = get_project('/Users/markwatson/dev/github/markwatsonatx/minienv/')
 containers = p.containers(stopped=True)
 while len(containers) == 0:
    time.sleep(5)

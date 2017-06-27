@@ -1,7 +1,7 @@
 version: '3'
 services:
-  exampleup:
-    image: 127.0.0.1:5000/markwatsonatx/exampleup:latest
+  minienv:
+    image: 127.0.0.1:5000/markwatsonatx/minienv:latest
     privileged: true
     volumes:
       - $volumeName:/var/lib/docker

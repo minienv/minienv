@@ -2,9 +2,9 @@
 docker swarm init
 
 # Start the registry, API, and web
-docker stack deploy -c docker-stack.yml exampleup-stack
+docker stack deploy -c docker-stack.yml minienv-stack
 
-# Run exampleup
+# Run minienv
 docker-compose -f docker-compose-example1.yml -p example1 up
 
 # Access log and editor with assigned port

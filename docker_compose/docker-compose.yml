@@ -1,7 +1,7 @@
 version: '2'
 services:
-  exampleup:
-    image: markwatsonatx/exampleup:latest
+  minienv:
+    image: markwatsonatx/minienv:latest
     privileged: true
     ports:
       - "33001:33001"

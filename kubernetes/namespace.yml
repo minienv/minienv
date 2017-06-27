@@ -1,6 +1,6 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: exampleup
+  name: minienv
   labels:
-    name: exampleup
+    name: minienv
