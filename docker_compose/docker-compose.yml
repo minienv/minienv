@@ -1,15 +1,27 @@
-version: '2'
+version: '3'
 services:
-  minienv:
-    image: markwatsonatx/minienv:latest
-    privileged: true
+  minienv-registry:
+    image: markwatsonatx/minienv-registry:latest
     ports:
-      - "33001:33001"
-      - "33002:33002"
-      - "33003:33003"
+      - "5000:5000"
+  minienv-api:
+    image: markwatsonatx/minienv-api-swarm:latest
+    depends_on:
+      - minienv-registry
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "31112:8080"
     environment:
-      - EXUP_ALLOW_ORIGIN=http://localhost:8080
-      - EXUP_LOG_PORT=33001
-      - EXUP_EDITOR_PORT=33002
-      - EXUP_PROXY_PORT=33003
-      - EXUP_GIT_REPO=${EXUP_GIT_REPO}
+      - EXUP_ALLOW_ORIGIN=http://localhost:31111
+      - EXUP_NODE_HOST_NAME=localhost
+      - EXUP_STORAGE_DRIVER=aufs
+  minienv-web:
+    image: markwatsonatx/minienv-web:latest
+    depends_on:
+      - minienv-registry
+      - minienv-api
+    ports:
+      - "31111:80"
+    environment:
+      - EXUP_API_URL=http://localhost:31112

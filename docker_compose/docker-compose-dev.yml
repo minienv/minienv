@@ -1,0 +1,14 @@
+version: '3'
+services:
+  minienv:
+    image: markwatsonatx/minienv:latest
+    privileged: true
+    ports:
+      - "30081:30081"
+      - "30082:30082"
+      - "30083:30083"
+    environment:
+      - EXUP_LOG_PORT=30081
+      - EXUP_EDITOR_PORT=30082
+      - EXUP_PROXY_PORT=30083
+      - EXUP_GIT_REPO=${GIT_REPO}
