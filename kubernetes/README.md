@@ -20,9 +20,5 @@ kubectl create -f ./service-api.yml
 kubectl create -f ./minikube.dev/deployment-web.yml<br />
 kubectl create -f ./service-web.yml
 
-### Run a single deployment & service at runtime for each user/docker-compose sample
-kubectl create -f ./examples/deployment-example-1.yml --namespace=minienv<br />
-kubectl create -f ./examples/service-example-1.yml --namespace=minienv
-
 ### Point web browser to
 http://minikube.dev:31111
