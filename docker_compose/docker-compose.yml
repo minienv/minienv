@@ -1,11 +1,11 @@
 version: '3'
 services:
   minienv-registry:
-    image: markwatsonatx/minienv-registry:latest
+    image: minienv/minienv-registry:latest
     ports:
       - "5000:5000"
   minienv-api:
-    image: markwatsonatx/minienv-api-swarm:latest
+    image: minienv/minienv-api-swarm:latest
     depends_on:
       - minienv-registry
     volumes:
@@ -13,15 +13,15 @@ services:
     ports:
       - "31112:8080"
     environment:
-      - EXUP_ALLOW_ORIGIN=http://localhost:31111
-      - EXUP_NODE_HOST_NAME=localhost
-      - EXUP_STORAGE_DRIVER=aufs
+      - MINIENV_ALLOW_ORIGIN=http://localhost:31111
+      - MINIENV_NODE_HOST_NAME=localhost
+      - MINIENV_STORAGE_DRIVER=aufs
   minienv-web:
-    image: markwatsonatx/minienv-web:latest
+    image: minienv/minienv-web:latest
     depends_on:
       - minienv-registry
       - minienv-api
     ports:
       - "31111:80"
     environment:
-      - EXUP_API_URL=http://localhost:31112
+      - MINIENV_API_URL=http://localhost:31112

@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: minienv-web
-          image: localhost:5000/markwatsonatx/minienv-web:latest
+          image: localhost:5000/minienv/minienv-web:latest
           resources:
             requests:
               memory: "128Mi"
@@ -20,5 +20,5 @@ spec:
               memory: "256Mi"
               cpu: "500m"
           env:
-          - name: EXUP_API_URL
+          - name: MINIENV_API_URL
             value: "http://minienvup.com:31112"

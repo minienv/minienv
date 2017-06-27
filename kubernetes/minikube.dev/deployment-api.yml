@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: minienv-api
-          image: localhost:5000/markwatsonatx/minienv-api-kube:latest
+          image: localhost:5000/minienv/minienv-api-kube:latest
           resources:
             requests:
               memory: "128Mi"
@@ -20,13 +20,13 @@ spec:
               memory: "256Mi"
               cpu: "500m"
           env:
-          - name: EXUP_ALLOW_ORIGIN
+          - name: MINIENV_ALLOW_ORIGIN
             value: "http://minikube.dev:31111"
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
-          - name: EXUP_NODE_HOST_NAME
+          - name: MINIENV_NODE_HOST_NAME
             value: "minikube.dev"
-          - name: EXUP_NAMESPACE
+          - name: MINIENV_NAMESPACE
             value: "minienv"
-          - name: EXUP_STORAGE_DRIVER
+          - name: MINIENV_STORAGE_DRIVER
             value: "aufs"

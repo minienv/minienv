@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start Docker
-storage_driver=${EXUP_STORAGE_DRIVER}
+storage_driver=${MINIENV_STORAGE_DRIVER}
 if [[ -z  ${storage_driver} ]]; then
     storage_driver="vfs"
 fi
@@ -30,7 +30,7 @@ docker rm $(docker ps -aq)
 
 # Clone repo
 rm -rf /dc
-git clone ${EXUP_GIT_REPO} /dc
+git clone ${MINIENV_GIT_REPO} /dc
 if [ ! -f /dc/docker-compose.yml ]; then
     if [ -f /dc/docker-compose.yaml ]; then
         mv /dc/docker-compose.yaml /dc/docker-compose.yml

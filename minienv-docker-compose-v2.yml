@@ -1,30 +1,30 @@
 version: '2'
 services:
   log:
-    image: markwatsonatx/minienv-log:latest
+    image: minienv/minienv-log:latest
     volumes:
       - ./:/dc
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      - EXUP_DIR=/dc
-      - EXUP_ALLOW_ORIGIN=${EXUP_ALLOW_ORIGIN}
+      - MINIENV_DIR=/dc
+      - MINIENV_ALLOW_ORIGIN=${MINIENV_ALLOW_ORIGIN}
     ports:
-      - "${EXUP_LOG_PORT}:8080"
+      - "${MINIENV_LOG_PORT}:8080"
   editor:
-    image: markwatsonatx/minienv-editor:latest
+    image: minienv/minienv-editor:latest
     volumes:
       - ./:/dc
     environment:
-      - EXUP_DIR=/dc
-      - EXUP_ALLOW_ORIGIN=${EXUP_ALLOW_ORIGIN}
+      - MINIENV_DIR=/dc
+      - MINIENV_ALLOW_ORIGIN=${MINIENV_ALLOW_ORIGIN}
     ports:
-      - "${EXUP_EDITOR_PORT}:80"
+      - "${MINIENV_EDITOR_PORT}:80"
   proxy:
-    image: markwatsonatx/minienv-proxy:latest
+    image: minienv/minienv-proxy:latest
     environment:
-      - EXUP_TARGET_HOST=dind
-      - EXUP_ALLOW_ORIGIN=${EXUP_ALLOW_ORIGIN}
+      - MINIENV_TARGET_HOST=dind
+      - MINIENV_ALLOW_ORIGIN=${MINIENV_ALLOW_ORIGIN}
     extra_hosts:
       - "dind:${DIND_IP_ADDRESS}"
     ports:
-      - "${EXUP_PROXY_PORT}:80"
+      - "${MINIENV_PROXY_PORT}:80"

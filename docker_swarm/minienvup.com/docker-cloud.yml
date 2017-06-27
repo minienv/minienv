@@ -1,11 +1,11 @@
 minienv-registry:
-  image: markwatsonatx/minienv-registry:latest
+  image: minienv/minienv-registry:latest
   roles:
     - global
   ports:
     - "5000:5000"
 minienv-api:
-  image: markwatsonatx/minienv-api-swarm:latest
+  image: minienv/minienv-api-swarm:latest
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
   roles:
@@ -13,12 +13,12 @@ minienv-api:
   ports:
     - "31112:8080"
   environment:
-    - EXUP_ALLOW_ORIGIN=http://minienvup.com:31111
-    - EXUP_NODE_HOST_NAME=minienvup.com
-    - EXUP_STORAGE_DRIVER=aufs
+    - MINIENV_ALLOW_ORIGIN=http://minienvup.com:31111
+    - MINIENV_NODE_HOST_NAME=minienvup.com
+    - MINIENV_STORAGE_DRIVER=aufs
 minienv-web:
-  image: markwatsonatx/minienv-web:latest
+  image: minienv/minienv-web:latest
   ports:
     - "31111:80"
   environment:
-    - EXUP_API_URL=http://minienvup.com:31112
+    - MINIENV_API_URL=http://minienvup.com:31112

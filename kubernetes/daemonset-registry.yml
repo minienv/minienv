@@ -13,7 +13,7 @@ spec:
       hostNetwork: true
       containers:
       - name: minienv-registry
-        image: markwatsonatx/minienv-registry:latest
+        image: minienv/minienv-registry:latest
         ports:
         - name: registry
           containerPort: 5000
