@@ -20,6 +20,8 @@ spec:
               memory: "256Mi"
               cpu: "500m"
           env:
+          - name: MINIENV_PROVISION_COUNT
+            value: 4
           - name: MINIENV_ALLOW_ORIGIN
             value: "http://minikube.dev:31111"
           - name: KUBERNETES_TOKEN_PATH
