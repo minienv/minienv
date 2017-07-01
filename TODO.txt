@@ -2,6 +2,9 @@ Web
 1. Do not allow privileged in docker-compose file
 2. Get domain name of node
 3. Volume for registry cache
+4. Docker compose ports
+   a. Auto ports not allowed
+   b. Cannot overlap default side-container ports (30081, 30082, 30083)
 
 Docker Swarm
 1. NodeName??
