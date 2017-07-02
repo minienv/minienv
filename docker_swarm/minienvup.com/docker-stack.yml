@@ -21,6 +21,7 @@ services:
     ports:
       - "31112:8080"
     environment:
+      - MINIENV_PROVISION_COUNT=4
       - MINIENV_ALLOW_ORIGIN=http://minienvup.com:31111
       - MINIENV_NODE_HOST_NAME=minienvup.com
       - MINIENV_STORAGE_DRIVER=aufs
