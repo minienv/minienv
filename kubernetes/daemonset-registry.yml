@@ -1,3 +1,26 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minienv-registry-pv
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /minienv-registry
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minienv-registry-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
 apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
@@ -14,7 +37,14 @@ spec:
       containers:
       - name: minienv-registry
         image: minienv/minienv-registry:latest
+        volumeMounts:
+          - mountPath: "/var/lib/docker"
+            name: docker-storage
         ports:
         - name: registry
           containerPort: 5000
           hostPort: 5000
+      volumes:
+        - name: docker-storage
+          persistentVolumeClaim:
+            claimName: minienv-registry-pvc
