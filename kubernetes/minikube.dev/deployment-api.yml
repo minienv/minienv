@@ -23,7 +23,7 @@ spec:
           - name: MINIENV_PROVISION_COUNT
             value: "4"
           - name: MINIENV_PROVISION_IMAGES
-            value: "rethinkdb:latest,markwatsonatx/node-alpine:latest,ibmcom/cloudant-developer:latest,markwatsonatx/pixiedust-python27-spark163-alpine-dev:1.0.6"
+            value: "rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/pixiedust-python27-spark163-alpine-dev:1.0.6"
           - name: MINIENV_ALLOW_ORIGIN
             value: "http://minikube.dev:31111"
           - name: KUBERNETES_TOKEN_PATH

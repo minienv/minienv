@@ -6,6 +6,7 @@ if [[ -z  ${storage_driver} ]]; then
     storage_driver="vfs"
 fi
 if [[ ! -z ${NODE_NAME} ]]; then
+    export MINIENV_NPM_PROXY_CACHE=http://$NODE_NAME:5001
     registryMirror="http://$NODE_NAME:5000"
     /usr/local/bin/dockerd-entrypoint.sh --storage-driver=${storage_driver} --registry-mirror=${registryMirror} &
 else

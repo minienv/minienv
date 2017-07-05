@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minienv-npm-proxy-cache-pv
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /minienv-npm-proxy-cache
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minienv-npm-proxy-cache-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: minienv-npm-proxy-cache-daemonset
+  name: minienv-npm-proxy-cache-daemonset
+spec:
+  template:
+    metadata:
+      labels:
+        app: minienv-npm-proxy-cache
+    spec:
+      hostNetwork: true
+      containers:
+      - name: minienv-npm-proxy-cache
+        image: minienv/minienv-npm-proxy-cache:latest
+        volumeMounts:
+          - mountPath: "/cache"
+            name: npm-cache
+        ports:
+        - name: npm-proxy-cache
+          containerPort: 5001
+          hostPort: 5001
+      volumes:
+        - name: npm-cache
+          persistentVolumeClaim:
+            claimName: minienv-npm-proxy-cache-pvc

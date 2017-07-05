@@ -12,6 +12,9 @@ kubectl create -f ./namespace.yml
 ### Create registry daemonset
 kubectl create -f ./daemonset-registry.yml
 
+### Create npm proxy cache daemonset
+kubectl create -f ./daemonset-npm-proxy-cache.yml
+
 ### Create API deployment and service
 kubectl create -f ./minikube.dev/deployment-api.yml<br />
 kubectl create -f ./service-api.yml
