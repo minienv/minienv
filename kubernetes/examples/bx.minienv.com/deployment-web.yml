@@ -13,12 +13,8 @@ spec:
         - name: minienv-web
           image: localhost:5000/minienv/minienv-web:latest
           resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
             limits:
-              memory: "256Mi"
-              cpu: "500m"
+              memory: "128Mi"
           env:
           - name: MINIENV_API_URL
             value: "http://minienvup.com:31112"

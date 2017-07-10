@@ -13,23 +13,23 @@ spec:
         - name: minienv-api
           image: localhost:5000/minienv/minienv-api-kube:latest
           resources:
-            requests:
-              memory: "128Mi"
-              cpu: "250m"
             limits:
               memory: "256Mi"
-              cpu: "500m"
           env:
           - name: MINIENV_PROVISION_COUNT
-            value: "4"
+            value: "2"
+          - name: MINIENV_PROVISION_VOLUME_SIZE
+            value: "10Gi"
           - name: MINIENV_PROVISION_IMAGES
-            value: "rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/pixiedust-python27-spark163-alpine-dev:1.0.6"
+            value: "rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/pixiedust-python27-spark163-alpine-dev:1.0.6,markwatsonatx/spark-notebook:2.1.1"
+          - name: MINIENV_REPO_WHITELIST
+            value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps,https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala,https://github.com/markwatsonatx/tutorial-pixiedust"
           - name: MINIENV_ALLOW_ORIGIN
-            value: "http://minikube.dev:31111"
+            value: "http://DOMAIN_NAME:31111"
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
           - name: MINIENV_NODE_HOST_NAME
-            value: "minikube.dev"
+            value: "DOMAIN_NAME"
           - name: MINIENV_NAMESPACE
             value: "minienv"
           - name: MINIENV_STORAGE_DRIVER

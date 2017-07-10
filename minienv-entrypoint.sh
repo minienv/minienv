@@ -5,7 +5,11 @@ storage_driver=${MINIENV_STORAGE_DRIVER}
 if [[ -z  ${storage_driver} ]]; then
     storage_driver="vfs"
 fi
-if [[ ! -z ${NODE_NAME} ]]; then
+if [[ ! -z ${MINIENV_NODE_NAME_OVERRIDE} ]]; then
+    export MINIENV_NPM_PROXY_CACHE=http://$MINIENV_NODE_NAME_OVERRIDE:5001
+    registryMirror="http://$MINIENV_NODE_NAME_OVERRIDE:5000"
+    /usr/local/bin/dockerd-entrypoint.sh --storage-driver=${storage_driver} --registry-mirror=${registryMirror} &
+elif [[ ! -z ${NODE_NAME} ]]; then
     export MINIENV_NPM_PROXY_CACHE=http://$NODE_NAME:5001
     registryMirror="http://$NODE_NAME:5000"
     /usr/local/bin/dockerd-entrypoint.sh --storage-driver=${storage_driver} --registry-mirror=${registryMirror} &

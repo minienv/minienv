@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  labels:
+    app: minienv-registry-daemonset
+  name: minienv-registry-daemonset
+spec:
+  template:
+    metadata:
+      labels:
+        app: minienv-registry
+    spec:
+      hostNetwork: true
+      containers:
+      - name: minienv-registry
+        image: minienv/minienv-registry:latest
+        volumeMounts:
+          - mountPath: "/var/lib/docker"
+            name: minienv-registry-volume
+        ports:
+        - name: registry
+          containerPort: 5000
+          hostPort: 5000
+        resources:
+          limits:
+            memory: "128Mi"
+      volumes:
+        - name: minienv-registry-volume
+          emptyDir: {}
