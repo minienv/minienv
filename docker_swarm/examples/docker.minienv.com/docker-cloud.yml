@@ -1,0 +1,33 @@
+minienv-registry:
+  image: minienv/minienv-registry:latest
+  roles:
+    - global
+  ports:
+    - "5000:5000"
+minienv-npm-proxy-cache:
+  image: minienv/minienv-npm-proxy-cache:latest
+  roles:
+    - global
+  ports:
+    - "5001:5001"
+minienv-api:
+  image: minienv/minienv-api-swarm:latest
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  roles:
+    - global
+  ports:
+    - "31112:8080"
+  environment:
+    - MINIENV_PROVISION_COUNT=4
+    - MINIENV_PROVISION_IMAGES=rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/pixiedust-python27-spark163-alpine-dev:1.0.6,markwatsonatx/spark-notebook:2.1.1
+    - MINIENV_REPO_WHITELIST=https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps,https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala,https://github.com/markwatsonatx/tutorial-pixiedust
+    - MINIENV_ALLOW_ORIGIN=http://docker.minienv.com:31111
+    - MINIENV_NODE_HOST_NAME=docker.minienv.com
+    - MINIENV_STORAGE_DRIVER=overlay2
+minienv-web:
+  image: minienv/minienv-web:latest
+  ports:
+    - "31111:80"
+  environment:
+    - MINIENV_API_URL=http://docker.minienv.com:31112
