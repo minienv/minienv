@@ -1,7 +1,7 @@
 version: '3'
 services:
   log:
-    image: minienv/minienv-log:latest
+    image: minienv/minienv-log:${MINIENV_VERSION}
     volumes:
       - ./:/dc
       - /var/run/docker.sock:/var/run/docker.sock
@@ -11,7 +11,7 @@ services:
     ports:
       - "${MINIENV_LOG_PORT}:8080"
   editor:
-    image: minienv/minienv-editor:latest
+    image: minienv/minienv-editor:${MINIENV_VERSION}
     volumes:
       - ./:/dc
     environment:
@@ -20,7 +20,7 @@ services:
     ports:
       - "${MINIENV_EDITOR_PORT}:80"
   proxy:
-    image: minienv/minienv-proxy:latest
+    image: minienv/minienv-proxy:${MINIENV_VERSION}
     environment:
       - MINIENV_TARGET_HOST=dind
       - MINIENV_ALLOW_ORIGIN=${MINIENV_ALLOW_ORIGIN}

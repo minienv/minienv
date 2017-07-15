@@ -19,11 +19,11 @@ spec:
           - name: MINIENV_PROVISION_COUNT
             value: "4"
           - name: MINIENV_PROVISION_VOLUME_SIZE
-            value: "10Gi"
+            value: "20Gi"
           - name: MINIENV_PROVISION_IMAGES
-            value: "rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/pixiedust-python27-spark163-alpine-dev:1.0.6,markwatsonatx/spark-notebook:2.1.1"
+            value: "rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/spark-notebook:2.1.1"
           - name: MINIENV_REPO_WHITELIST
-            value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps,https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala,https://github.com/markwatsonatx/tutorial-pixiedust"
+            value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps,https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala"
           - name: MINIENV_ALLOW_ORIGIN
             value: "http://bx.minienv.com:31111"
           - name: KUBERNETES_TOKEN_PATH
