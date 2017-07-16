@@ -25,7 +25,7 @@ Also, you can watch this video for an overview on how minienv runs in Kubernetes
 [https://youtu.be/uVQZPdleE1o](https://youtu.be/uVQZPdleE1o)
 
 ### Can I try it out?
-You can try minienv at [http://bx.minienv.com:31111](http://bx.minienv.com:31111) or [http://gke.minienv.com:3111](http://gke.minienv.com:3111). The former is running on a free
+You can try minienv at [http://bx.minienv.com:31111](http://bx.minienv.com:31111) or [http://gke.minienv.com:31111](http://gke.minienv.com:31111). The former is running on a free
 single-node Kubernetes cluster in the Bluemix Container Service and can run up to 4 environments (instances of a sample applications).
 The latter is running on a 2-node cluster on Google Container Engine (g1-small) and can run up to 6 environments.
 When you run minienv you specify the number of environments you want to provision.
