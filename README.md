@@ -6,6 +6,8 @@ minienv also includes an online editor that allows you to edit source code or da
 environments. This helps make minienv a great tool for learning (or teaching) new programming languages, databases, and
 other technologies right from your browser.
 
+![minienv](http://minienv.com/assets/img/learner.png "minienv")
+
 ### Why was minienv created?
 minienv was created to help make it easier to deliver sample applications and developer tutorials that connect to databases
 and other backend services. If you want to learn javascript and frontend web development there are a lot of really great
