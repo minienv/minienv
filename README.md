@@ -17,6 +17,13 @@ where they can experiment with just about any technology, as long as it can run 
 minienv runs inside Kubernetes as a set of Daemon Sets and Deployments (Docker Swarm support in development).
 You can find instructions for setting up minienv in your own Kubernetes cluster [here](https://github.com/minienv/minienv/tree/master/kubernetes).
 
+## More Info
+You can watch this video for an overview on how the minienv web application works:
+[https://youtu.be/PtvYWO_5pFk](https://youtu.be/PtvYWO_5pFk)
+
+You can watch this video for an overview on how minienv runs in Kubernetes:
+[https://youtu.be/uVQZPdleE1o](https://youtu.be/uVQZPdleE1o)
+
 ### Can I try it out?
 You can try minienv at [http://bx.minienv.com:31111](http://bx.minienv.com:31111) or [http://gke.minienv.com:3111](http://gke.minienv.com:3111). The former is running on a free
 single-node Kubernetes cluster in the Bluemix Container Service and can run up to 4 environments (instances of a sample applications).
@@ -27,10 +34,3 @@ In these cases I am running on fairly lightweight hardware, so I’ve only provi
 Please note: Since only a limited number of environments are available it is possible that they may all be used up
 and you will not be able to try out minienv. Please let me know if you encounter any issues. You can also watch the videos
 below to see minienv in action.
-
-### More Info
-You can watch this video for an overview on how the minienv web application works:
-[https://youtu.be/PtvYWO_5pFk](https://youtu.be/PtvYWO_5pFk)
-
-You can watch this video for an overview on how minienv runs in Kubernetes:
-[https://youtu.be/uVQZPdleE1o](https://youtu.be/uVQZPdleE1o)
