@@ -16,6 +16,8 @@ spec:
             limits:
               memory: "256Mi"
           env:
+          - name: MINIENV_VERSION
+            value: "latest"
           - name: MINIENV_PROVISION_COUNT
             value: "4"
           - name: MINIENV_PROVISION_VOLUME_SIZE

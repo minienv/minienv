@@ -35,7 +35,6 @@ services:
       - MINIENV_REPO_WHITELIST=https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps,https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala
       - MINIENV_ALLOW_ORIGIN=http://localhost:31111
       - MINIENV_NODE_HOST_NAME=localhost
-      - MINIENV_STORAGE_DRIVER=overlay2
   minienv-web:
     image: minienv/minienv-web:latest
     depends_on:

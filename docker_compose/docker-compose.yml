@@ -13,9 +13,12 @@ services:
     ports:
       - "31112:8080"
     environment:
+      - COMPOSE_HTTP_TIMEOUT=180
+      - MINIENV_PROVISION_COUNT=1
+      - MINIENV_PROVISION_IMAGES=rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/spark-notebook:2.1.1
+      - MINIENV_REPO_WHITELIST=https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps,https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala
       - MINIENV_ALLOW_ORIGIN=http://localhost:31111
       - MINIENV_NODE_HOST_NAME=localhost
-      - MINIENV_STORAGE_DRIVER=aufs
   minienv-web:
     image: minienv/minienv-web:latest
     depends_on:

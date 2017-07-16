@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment 
+metadata:
+  name: minienv-web-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minienv-web
+    spec:
+      containers:
+        - name: minienv-web
+          image: localhost:5000/minienv/minienv-web:0.1.0
+          resources:
+            limits:
+              memory: "128Mi"
+          env:
+          - name: MINIENV_API_URL
+            value: "http://gke.minienv.com:31112"
