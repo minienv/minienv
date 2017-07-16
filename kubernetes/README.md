@@ -52,16 +52,20 @@ Use the deployment-api.yml file in template/single-node-host-path as a guide for
 
 ### Examples
 
+See the examples folder for examples running minienv in Bluemix and Google Container Engine.
 
+### Running in Minikube
 
+Minikube support is still in progress. These instructions may or may not work. Since minienv requires a domain name you must
+configure a DNS server on your local machine. Here are instructions for Mac:
 
-### Configure DNS
+#### Configure DNS
 On Mac follow the instructions for setting up Local DNS at  http://fullybaked.co.uk/articles/setting-up-a-local-dns-server-on-osx<br />
 Add the following entry to /usr/local/etc/dnsmasq.conf:<br />
 `address=/minikube.dev/192.168.99.100`
 
-### Start minikube
+#### Start Minikube
 minikube start
 
-### Point web browser to
+#### Point web browser to
 http://minikube.dev:31111
