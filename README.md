@@ -31,9 +31,9 @@ Please note: Since only a limited number of environments are available it is pos
 and you will not be able to try out minienv. Please let me know if you encounter any issues. You can also watch the videos
 below to see minienv in action.
 
-### More info
+### More Info
 You can watch this video for an overview on how the minienv web application works:
-[https://www.youtube.com/embed/PtvYWO_5pFk](https://www.youtube.com/embed/PtvYWO_5pFk)
+[https://youtu.be/PtvYWO_5pFk](https://youtu.be/PtvYWO_5pFk)
 
 You can watch this video for an overview on how minienv runs in Kubernetes:
-[https://www.youtube.com/embed/uVQZPdleE1o](https://www.youtube.com/embed/uVQZPdleE1o)
+[https://youtu.be/uVQZPdleE1o](https://youtu.be/uVQZPdleE1o)
