@@ -13,15 +13,15 @@ web-based tools available, like CodePen and JSFiddle, but what if you want to le
 with MongoDB, or a Jupyter notebook with Apache Spark? With minienv users get their own mini Docker Compose environments
 where they can experiment with just about any technology, as long as it can run in a container.
 
+### Watch the Video
+You can watch this video for an overview on how the minienv web application works:<br />
+[https://youtu.be/PtvYWO_5pFk](https://youtu.be/PtvYWO_5pFk)
+
 ### How do I set up minienv?
 minienv runs inside Kubernetes as a set of Daemon Sets and Deployments (Docker Swarm support in development).
 You can find instructions for setting up minienv in your own Kubernetes cluster [here](https://github.com/minienv/minienv/tree/master/kubernetes).
 
-### More Info
-You can watch this video for an overview on how the minienv web application works:
-[https://youtu.be/PtvYWO_5pFk](https://youtu.be/PtvYWO_5pFk)
-
-You can watch this video for an overview on how minienv runs in Kubernetes:
+Also, you can watch this video for an overview on how minienv runs in Kubernetes:<br />
 [https://youtu.be/uVQZPdleE1o](https://youtu.be/uVQZPdleE1o)
 
 ### Can I try it out?
