@@ -14,7 +14,7 @@ with MongoDB, or a Jupyter notebook with Apache Spark? With minienv users get th
 where they can experiment with just about any technology, as long as it can run in a container.
 
 ### Watch the Video
-You can watch this video for an overview on how the minienv web application works:<br />
+Watch this video for an overview on how minienv works:<br />
 [https://youtu.be/PtvYWO_5pFk](https://youtu.be/PtvYWO_5pFk)
 
 ### How do I set up minienv?
