@@ -13,7 +13,7 @@ spec:
       hostNetwork: true
       containers:
       - name: minienv-npm-proxy-cache
-        image: minienv/minienv-npm-proxy-cache:latest
+        image: minienv/minienv-npm-proxy-cache:0.1.0
         volumeMounts:
           - mountPath: "/cache"
             name: npm-proxy-cache-volume

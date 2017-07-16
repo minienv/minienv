@@ -13,7 +13,7 @@ spec:
       hostNetwork: true
       containers:
       - name: minienv-registry
-        image: minienv/minienv-registry:latest
+        image: minienv/minienv-registry:0.1.0
         volumeMounts:
           - mountPath: "/var/lib/docker"
             name: minienv-registry-volume
