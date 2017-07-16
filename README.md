@@ -17,7 +17,7 @@ where they can experiment with just about any technology, as long as it can run 
 minienv runs inside Kubernetes as a set of Daemon Sets and Deployments (Docker Swarm support in development).
 You can find instructions for setting up minienv in your own Kubernetes cluster [here](https://github.com/minienv/minienv/tree/master/kubernetes).
 
-## More Info
+### More Info
 You can watch this video for an overview on how the minienv web application works:
 [https://youtu.be/PtvYWO_5pFk](https://youtu.be/PtvYWO_5pFk)
 
