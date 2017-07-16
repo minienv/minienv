@@ -11,10 +11,10 @@ spec:
     spec:
       containers:
         - name: minienv-web
-          image: localhost:5000/minienv/minienv-web:latest
+          image: localhost:5000/minienv/minienv-web:0.1.0
           resources:
             limits:
               memory: "128Mi"
           env:
           - name: MINIENV_API_URL
-            value: "http://bx.minienv.com:31112"
+            value: "http://DOMAIN_NAME:31112"
