@@ -34,4 +34,4 @@ In these cases I am running on fairly lightweight hardware, so I’ve only provi
 
 Please note: Since only a limited number of environments are available it is possible that they may all be used up
 and you will not be able to try out minienv. Please let me know if you encounter any issues. You can also watch the videos
-below to see minienv in action.
+above to see minienv in action.
