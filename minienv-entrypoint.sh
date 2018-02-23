@@ -41,7 +41,13 @@ if [ ! -f /dc/docker-compose.yml ]; then
         mv /dc/docker-compose.yaml /dc/docker-compose.yml
     fi
 fi
-export DIND_IP_ADDRESS="$(ip route show | grep docker0 | awk '{print $5}')"
+echo "$(date) - Getting DIND_IP_ADDRESS..."
+export DIND_IP_ADDRESS="$(ip route show | grep docker0 | awk '{print $NF}')"
+if [[ -z ${DIND_IP_ADDRESS} ]]; then
+    echo "$(date) - Unable to obtain DIND_IP_ADDRESS from ip route, using default..."
+    export DIND_IP_ADDRESS="172.17.0.1"
+fi
+echo "$(date) - DIND_IP_ADDRESS = $DIND_IP_ADDRESS"
 version=$(sed -n "s/^.*version.*\:.*\([0-9]\).*$/\1/p" /dc/docker-compose.yml)
 mv ./minienv-docker-compose-v${version}.yml ./minienv-docker-compose.yml
 docker-compose -f ./dc/docker-compose.yml -f ./minienv-docker-compose.yml up --force-recreate
