@@ -24,9 +24,9 @@ spec:
           - name: MINIENV_PROVISION_VOLUME_SIZE
             value: "20Gi"
           - name: MINIENV_PROVISION_IMAGES
-            value: "rethinkdb:latest,node:alpine,ibmcom/cloudant-developer:latest,markwatsonatx/spark-notebook-ml:2.1.1,markwatsonatx/pixiedust-python27-spark163-alpine:1.1.7.1,markwatsonatx/tutorial-polymer-shop-hoodie:latest"
+            value: "rethinkdb:latest,node:alpine,markwatsonatx/flask-alpine-sklearn:latest,markwatsonatx/spark-notebook-ml:2.1.1"
           - name: MINIENV_REPO_WHITELIST
-            value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps,https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala,https://github.com/markwatsonatx/tutorial-watson-ml-intro,https://github.com/markwatsonatx/tutorial-pixiedust,https://github.com/markwatsonatx/tutorial-polymer-shop-hoodie-cloudant"
+            value: "Apache Spark - Word Count Notebook|https://github.com/markwatsonatx/tutorial-spark-notebook-wordcount-scala,Machine Learning - Intro. to scikit-learn|https://github.com/markwatsonatx/tutorial-scikit-learn-intro,Machine Learning - scikit-learn Scoring|https://github.com/markwatsonatx/tutorial-scikit-learn-scoring,Machine Learning - Intro. to Spark ML|https://github.com/markwatsonatx/tutorial-spark-ml-intro,Machine Learning - Intro. to IBM Watson ML|https://github.com/markwatsonatx/tutorial-watson-ml-intro,RethinkDB - CRUD|https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,RethinkDB - Rock-Paper-Scissors|https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps"
           - name: MINIENV_ALLOW_ORIGIN
             value: "http://bx.minienv.com:31111"
           - name: KUBERNETES_TOKEN_PATH
