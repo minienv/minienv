@@ -35,7 +35,11 @@ docker rm $(docker ps -aq)
 
 # Clone repo
 rm -rf /dc
-git clone ${MINIENV_GIT_REPO} /dc
+if [[ -z ${MINIENV_GIT_BRANCH} ]]; then
+    git clone --single-branch ${MINIENV_GIT_REPO} --depth 1 /dc
+else
+    git clone -b ${MINIENV_GIT_BRANCH} --single-branch ${MINIENV_GIT_REPO} --depth 1 /dc
+fi
 if [ ! -f /dc/docker-compose.yml ]; then
     if [ -f /dc/docker-compose.yaml ]; then
         mv /dc/docker-compose.yaml /dc/docker-compose.yml

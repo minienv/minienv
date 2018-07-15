@@ -6,3 +6,4 @@ kubectl create -f ../deployment-api.yml
 kubectl create -f ../service-api.yml
 kubectl create -f ../deployment-web.yml
 kubectl create -f ../service-web.yml
+kubectl create -f ../clusterrolebindings.yml

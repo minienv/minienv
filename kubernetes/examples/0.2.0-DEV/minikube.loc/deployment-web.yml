@@ -12,9 +12,10 @@ spec:
       containers:
         - name: minienv-web
           image: localhost:5000/minienv/minienv-web:0.2.0-DEV
+          imagePullPolicy: Always
           resources:
             limits:
               memory: "128Mi"
           env:
           - name: MINIENV_API_URL
-            value: "http://minikube.dev:31112"
+            value: "http://minikube.loc:31112"

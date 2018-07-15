@@ -29,11 +29,11 @@ spec:
           - name: MINIENV_REPO_WHITELIST
             value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps"
           - name: MINIENV_ALLOW_ORIGIN
-            value: "http://minikube.dev:31111"
+            value: "http://minikube.loc:31111"
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
           - name: MINIENV_NODE_HOST_NAME
-            value: "minikube.dev"
+            value: "minikube.loc"
           - name: MINIENV_NAMESPACE
             value: "minienv"
           - name: MINIENV_STORAGE_DRIVER

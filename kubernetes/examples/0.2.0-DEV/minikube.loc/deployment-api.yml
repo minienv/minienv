@@ -12,6 +12,7 @@ spec:
       containers:
         - name: minienv-api
           image: localhost:5000/minienv/minienv-api-kube:0.2.0-DEV
+          imagePullPolicy: Always
           resources:
             limits:
               memory: "256Mi"
@@ -25,15 +26,15 @@ spec:
           - name: MINIENV_PROVISION_VOLUME_SIZE
             value: "10Gi"
           - name: MINIENV_PROVISION_IMAGES
-            value: "rethinkdb:latest,node:alpine"
-          - name: MINIENV_REPO_WHITELIST
-            value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-crud,https://github.com/markwatsonatx/tutorial-rethinkdb-nodejs-rps"
+            value: "node:alpine"
+          #- name: MINIENV_REPO_WHITELIST
+          #  value: "https://github.com/markwatsonatx/tutorial-docker-compose-nodejs-intro"
           - name: MINIENV_ALLOW_ORIGIN
-            value: "http://minikube.dev:31111"
+            value: "http://minikube.loc:31111"
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
           - name: MINIENV_NODE_HOST_NAME
-            value: "minikube.dev"
+            value: "minikube.loc"
           - name: MINIENV_NAMESPACE
             value: "minienv"
           - name: MINIENV_STORAGE_DRIVER

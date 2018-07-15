@@ -5,9 +5,9 @@ To run minienv on Kubernetes you will need to install the following yml files:
 1. namespace.yml - This is the namespace minienv will use to launch all environments
 2. daemonset-registry.yml - This is a Docker Registry pull through cache for caching docker images used in environments
 3. daemonset-npm-proxy-cache.yml - This is a NPM proxy cache for caching npm modules used in environments
-4. minikube.dev/deployment-api.yml - This is the minienv API. It contains the logic for provisioning and launching environments. You will need to customize this yml file for your environment. See below for more details.
+4. deployment-api.yml - This is the minienv API. It contains the logic for provisioning and launching environments. You will need to customize this yml file for your environment. See below for more details.
 5. service-api.yml - This expose the minienv API on a NodePort, by default port 31112
-6. minikube.dev/deployment-web.yml - This is the minienv web application
+6. deployment-web.yml - This is the minienv web application
 7. service-web.yml - This expose the minienv web application on a NodePort, by default port 31111
 
 ### Custom Configuration
@@ -60,12 +60,12 @@ Minikube support is still in progress. These instructions may or may not work. S
 configure a DNS server on your local machine. Here are instructions for Mac:
 
 #### Configure DNS
-On Mac follow the instructions for setting up Local DNS at  http://fullybaked.co.uk/articles/setting-up-a-local-dns-server-on-osx<br />
+On Mac follow the instructions for setting up Local DNS at [http://fullybaked.co.uk/articles/setting-up-a-local-dns-server-on-osx](http://fullybaked.co.uk/articles/setting-up-a-local-dns-server-on-osx)<br />
 Add the following entry to /usr/local/etc/dnsmasq.conf:<br />
-`address=/minikube.dev/192.168.99.100`
+`address=/minikube.loc/192.168.99.100`
 
 #### Start Minikube
 minikube start
 
 #### Point web browser to
-http://minikube.dev:31111
+http://minikube.loc:31111

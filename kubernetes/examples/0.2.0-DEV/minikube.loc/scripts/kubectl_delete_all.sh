@@ -6,3 +6,4 @@ kubectl delete service minienv-api-service
 kubectl delete deployment minienv-api-deployment
 kubectl delete daemonset minienv-npm-proxy-cache-daemonset
 kubectl delete daemonset minienv-registry-daemonset
+kubectl delete clusterrolebinding minienv-cluster-admin-crb
