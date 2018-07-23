@@ -19,10 +19,10 @@ spec:
           env:
           - name: MINIENV_VERSION
             value: "0.2.0-DEV"
-          - name: MINIENV_NODE_NAME_OVERRIDE
-            value: "192.168.99.100"
+          - name: MINIENV_VOLUME_STORAGE_CLASS
+            value: "standard"
           - name: MINIENV_PROVISION_COUNT
-            value: "1"
+            value: "2"
           - name: MINIENV_PROVISION_VOLUME_SIZE
             value: "10Gi"
           - name: MINIENV_PROVISION_IMAGES
@@ -30,12 +30,12 @@ spec:
           - name: MINIENV_REPO_WHITELIST
             value: "Master Branch|https://github.com/minienv/minienv-example|master,Test Branch|https://github.com/minienv/minienv-example|test"
           - name: MINIENV_ALLOW_ORIGIN
-            value: "http://www.minikube.loc"
+            value: "http://www.gke.minienv.com"
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
           - name: MINIENV_NODE_HOST_NAME
-            value: "api.minikube.loc"
+            value: "node.minienv.com"
           - name: MINIENV_NAMESPACE
             value: "minienv"
           - name: MINIENV_STORAGE_DRIVER
-            value: "vfs"
+            value: "overlay2"

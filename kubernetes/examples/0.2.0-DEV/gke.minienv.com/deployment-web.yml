@@ -18,4 +18,4 @@ spec:
               memory: "128Mi"
           env:
           - name: MINIENV_API_URL
-            value: "http://bx.minienv.com:31112"
+            value: "http://api.gke.minienv.com"

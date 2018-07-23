@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment 
+metadata:
+  name: minienv-probot-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minienv-probot
+    spec:
+      containers:
+        - name: minienv-probot
+          image: localhost:5000/minienv/minienv-probot:0.2.0-DEV
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+          env:
+          - name: MINIENV_API_URL
+            value: "http://api.gke.minienv.com"
+          - name: MINIENV_WEB_URL
+            value: "http://www.gke.minienv.com"
+          - name: APP_ID
+            valueFrom:
+              secretKeyRef:
+                name: minienv-probot-secret
+                key: appId
+          - name: PRIVATE_KEY
+            valueFrom:
+              secretKeyRef:
+                name: minienv-probot-secret
+                key: privateKey
+          - name: WEBHOOK_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: minienv-probot-secret
+                key: webhookSecret

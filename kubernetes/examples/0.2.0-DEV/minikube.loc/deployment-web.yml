@@ -2,6 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment 
 metadata:
   name: minienv-web-deployment
+  annotations:
+    annotations: ingress.kubernetes.io/rewrite-target: /
 spec:
   replicas: 1
   template:
@@ -18,4 +20,4 @@ spec:
               memory: "128Mi"
           env:
           - name: MINIENV_API_URL
-            value: "http://minikube.loc:31112"
+            value: "http://api.minikube.loc"
