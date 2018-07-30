@@ -17,6 +17,8 @@ spec:
             limits:
               memory: "128Mi"
           env:
+          - name: MINIENV_ENV
+            value: "dev"
           - name: MINIENV_API_URL
             value: "http://api.minikube.loc"
           - name: MINIENV_WEB_URL

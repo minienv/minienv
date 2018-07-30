@@ -67,5 +67,8 @@ Add the following entry to /usr/local/etc/dnsmasq.conf:<br />
 #### Start Minikube
 minikube start
 
+### Enable Ingress
+minikube addons enable ingress
+
 #### Point web browser to
-http://minikube.loc:31111
+http://minikube.loc
