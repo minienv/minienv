@@ -19,3 +19,8 @@ spec:
           env:
           - name: MINIENV_API_URL
             value: "http://api.gke.minienv.com"
+          - name: MINIENV_GITHUB_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: minienv-api-secret
+                key: githubClientId
