@@ -2,8 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment 
 metadata:
   name: minienv-web-deployment
-  annotations:
-    annotations: ingress.kubernetes.io/rewrite-target: /
 spec:
   replicas: 1
   template:
