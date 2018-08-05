@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment 
+metadata:
+  name: minienv-env-proxy-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minienv-env-proxy
+    spec:
+      containers:
+        - name: minienv-env-proxy
+          image: localhost:5000/minienv/minienv-proxy:0.2.0-DEV
+          imagePullPolicy: Always
+          env:
+          - name: MINIENV_ALLOW_ORIGIN
+            value: "http://minikube.loc"

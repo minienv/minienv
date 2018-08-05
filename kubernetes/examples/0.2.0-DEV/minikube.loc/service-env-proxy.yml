@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: minienv-web-service
+  name: minienv-env-proxy-service
 spec:
   selector:
-    app: minienv-web
+    app: minienv-env-proxy
   ports:
     - protocol: TCP
       port: 80
-      name: "web"
+      name: "env-proxy"
       targetPort: 80
   type: ClusterIP

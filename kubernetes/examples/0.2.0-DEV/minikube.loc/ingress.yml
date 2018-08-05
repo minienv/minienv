@@ -2,26 +2,29 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: minienv-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  backend:
-    serviceName: minienv-web-service
-    servicePort: 80
   rules:
-  - host: api.minikube.loc
+  - host: minikube.loc
     http:
       paths:
-      - backend:
+      - path: /*
+        backend:
+          serviceName: minienv-web-service
+          servicePort: 80
+      - path: /api/*
+        backend:
           serviceName: minienv-api-service
           servicePort: 80
-  - host: probot.minikube.loc
-    http:
-      paths:
-      - backend:
+      - path: /probot/*
+        backend:
           serviceName: minienv-probot-service
           servicePort: 80
-  - host: www.minikube.loc
+  - host: "*.minikube.loc"
     http:
       paths:
-      - backend:
-          serviceName: minienv-web-service
+      - path: /*
+        backend:
+          serviceName: minienv-env-proxy-service
           servicePort: 80

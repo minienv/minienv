@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-ingress-controller
+  namespace: ingress-nginx
+  labels:
+    app: ingress-nginx
+spec:
+  selector:
+    app: ingress-nginx
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  - name: https
+    port: 443
+    targetPort: https
+  type: LoadBalancer
+  loadBalancerIP: <YOUR_LOAD_BALANCER_IP_ADDRESS>
+  externalTrafficPolicy: Local
