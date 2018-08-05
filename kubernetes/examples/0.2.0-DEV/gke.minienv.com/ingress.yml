@@ -35,10 +35,3 @@ spec:
     hosts:
     - gke.minienv.com
     - "*.gke.minienv.com"
-#  tls:
-#  - secretName: minienv-standard-prod-tls-secret
-#    hosts:
-#    - gke.minienv.com
-#  - secretName: minienv-wildcard-prod-tls-secret
-#    hosts:
-#    - "*.gke.minienv.com"

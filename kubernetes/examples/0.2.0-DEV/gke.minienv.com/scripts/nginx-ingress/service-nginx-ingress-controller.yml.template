@@ -16,5 +16,5 @@ spec:
     port: 443
     targetPort: https
   type: LoadBalancer
-  loadBalancerIP: <YOUR_LOAD_BALANCED_IP_ADDRESS>
+  loadBalancerIP: <YOUR_LOAD_BALANCER_IP_ADDRESS>
   externalTrafficPolicy: Local
