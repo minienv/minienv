@@ -18,9 +18,9 @@ spec:
               memory: "128Mi"
           env:
           - name: MINIENV_API_URL
-            value: "http://api.gke.minienv.com"
+            value: "https://gke.minienv.com/api"
           - name: MINIENV_WEB_URL
-            value: "http://www.gke.minienv.com"
+            value: "https://gke.minienv.com"
           - name: APP_ID
             valueFrom:
               secretKeyRef:

@@ -18,7 +18,7 @@ spec:
               memory: "128Mi"
           env:
           - name: MINIENV_API_URL
-            value: "http://api.gke.minienv.com"
+            value: "https://gke.minienv.com/api"
           - name: MINIENV_GITHUB_CLIENT_ID
             valueFrom:
               secretKeyRef:

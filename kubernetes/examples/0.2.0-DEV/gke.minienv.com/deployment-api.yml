@@ -30,11 +30,13 @@ spec:
           #- name: MINIENV_REPO_WHITELIST
           #  value: "Master Branch|https://github.com/minienv/minienv-example|master,Test Branch|https://github.com/minienv/minienv-example|test"
           - name: MINIENV_ALLOW_ORIGIN
-            value: "http://www.gke.minienv.com"
+            value: "https://gke.minienv.com"
           - name: KUBERNETES_TOKEN_PATH
             value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
           - name: MINIENV_NODE_HOST_NAME
-            value: "node.minienv.com"
+            value: "gke.minienv.com"
+          - name: MINIENV_NODE_HOST_PROTOCOL
+            value: "https"
           - name: MINIENV_NAMESPACE
             value: "minienv"
           - name: MINIENV_STORAGE_DRIVER

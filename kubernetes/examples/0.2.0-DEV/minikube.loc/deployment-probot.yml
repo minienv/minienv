@@ -20,9 +20,9 @@ spec:
           - name: MINIENV_ENV
             value: "dev"
           - name: MINIENV_API_URL
-            value: "http://api.minikube.loc"
+            value: "http://minikube.loc/api"
           - name: MINIENV_WEB_URL
-            value: "http://www.minikube.loc"
+            value: "http://minikube.loc"
           - name: APP_ID
             valueFrom:
               secretKeyRef:
