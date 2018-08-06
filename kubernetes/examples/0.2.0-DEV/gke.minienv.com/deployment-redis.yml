@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment 
+metadata:
+  name: minienv-redis-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: minienv-redis
+    spec:
+      containers:
+      - name: minienv-redis
+        image: redis:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6379
