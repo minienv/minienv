@@ -40,10 +40,15 @@ if [[ -z ${MINIENV_GIT_BRANCH} ]]; then
 else
     git clone -b ${MINIENV_GIT_BRANCH} --single-branch ${MINIENV_GIT_REPO} --depth 1 /dc
 fi
-if [ ! -f /dc/docker-compose.yml ]; then
-    if [ -f /dc/docker-compose.yaml ]; then
-        mv /dc/docker-compose.yaml /dc/docker-compose.yml
+if [[ -z ${MINIENV_PLATFORM} ]]; then
+    if [ ! -f /dc/docker-compose.yml ]; then
+        if [ -f /dc/docker-compose.yaml ]; then
+            mv /dc/docker-compose.yaml /dc/docker-compose.yml
+        fi
     fi
+else
+    cp /platforms/${MINIENV_PLATFORM}/docker-compose.yml /dc/
+    sed -i -e 's/$port/'$MINIENV_PLATFORM_PORT'/g' /dc/docker-compose.yml
 fi
 echo "$(date) - Getting DIND_IP_ADDRESS..."
 export DIND_IP_ADDRESS="$(ip route show | grep docker0 | awk '{print $NF}')"
