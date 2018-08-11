@@ -41,6 +41,14 @@ docker stop $(docker ps -aq)
 # Remove all containers
 docker rm $(docker ps -aq)
 
+# Download minienv containers
+docker pull minienv/minienv-log:${MINIENV_VERSION}
+docker pull minienv/minienv-proxy:${MINIENV_VERSION}
+docker pull minienv/minienv-editor:${MINIENV_VERSION}
+
+# Remove images with no tag (older minienv containers)
+docker rmi $(docker images | grep "<none>" | awk '{print $3}')
+
 # Clone repo
 rm -rf /dc
 if [[ -z ${MINIENV_GIT_BRANCH} ]]; then

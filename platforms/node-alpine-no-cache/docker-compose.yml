@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    image: node:alpine    
+    volumes:
+      - ./:/opt/minienv
+    working_dir: /opt/minienv
+    command: sh -c "$command"
+    ports:
+     - "$port:$port"

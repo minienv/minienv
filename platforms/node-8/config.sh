@@ -6,11 +6,11 @@ echo "$(date) - node-8 docker-compose path = ${docker_compose_path}"
 # command
 platform_command=""
 if [[ -z ${MINIENV_PLATFORM_COMMAND} ]]; then
-    #if [[ -z ${MINIENV_NPM_PROXY_CACHE} ]]; then
+    if [[ -z ${MINIENV_NPM_PROXY_CACHE} ]]; then
         platform_command="npm install && npm install -g nodemon && nodemon --exec 'npm start'"
-    #else
-    #    platform_command="npm --proxy ${MINIENV_NPM_PROXY_CACHE} --https-proxy ${MINIENV_NPM_PROXY_CACHE} --strict-ssl false install && npm --proxy ${MINIENV_NPM_PROXY_CACHE} --https-proxy ${MINIENV_NPM_PROXY_CACHE} --strict-ssl false install -g nodemon && nodemon --exec 'npm start'"
-    #fi
+    else
+        platform_command="npm config set proxy ${MINIENV_NPM_PROXY_CACHE} && npm config set https-proxy ${MINIENV_NPM_PROXY_CACHE} && npm config set strict-ssl false && npm install && npm install -g nodemon && nodemon --exec 'npm start'"
+    fi
 else
     platform_command="${MINIENV_PLATFORM_COMMAND}"
 fi
