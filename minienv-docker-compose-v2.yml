@@ -17,7 +17,9 @@ services:
       - ./:/dc
     environment:
       - MINIENV_DIR=/dc
+      - MINIENV_SRC_DIR=${MINIENV_EDITOR_SRC_DIR}
       - MINIENV_ALLOW_ORIGIN=${MINIENV_ALLOW_ORIGIN}
+      - MINIENV_PLATFORM=${MINIENV_PLATFORM}
     ports:
       - "${MINIENV_EDITOR_PORT}:80"
   proxy:

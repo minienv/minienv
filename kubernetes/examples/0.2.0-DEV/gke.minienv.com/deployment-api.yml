@@ -26,7 +26,7 @@ spec:
           - name: MINIENV_PROVISION_VOLUME_SIZE
             value: "10Gi"
           - name: MINIENV_PROVISION_IMAGES
-            value: "node:alpine"
+            value: "node:alpine,node:8"
           #- name: MINIENV_REPO_WHITELIST
           #  value: "Master Branch|https://github.com/minienv/minienv-example|master,Test Branch|https://github.com/minienv/minienv-example|test"
           - name: MINIENV_ALLOW_ORIGIN
