@@ -57,16 +57,17 @@ else
     git clone -b ${MINIENV_GIT_BRANCH} --single-branch ${MINIENV_GIT_REPO} --depth 1 /dc
 fi
 docker_compose_path="/dc/docker-compose.yml"
-if [[ -z ${MINIENV_PLATFORM} ]]; then
-    if [ ! -f ${docker_compose_path} ]; then
-        mv /dc/docker-compose.yaml ${docker_compose_path}
-    fi
-else
-    echo "$(date) - Using built-in template ${MINIENV_PLATFORM}..."
-    cp /platforms/${MINIENV_PLATFORM}/docker-compose.yml ${docker_compose_path}
-    sed -i -e 's,$port,'${MINIENV_PLATFORM_PORT}',g' ${docker_compose_path}
-    bash /platforms/${MINIENV_PLATFORM}/config.sh  ${docker_compose_path}
-fi
+#if [[ -z ${MINIENV_PLATFORM} ]]; then
+#    if [ ! -f ${docker_compose_path} ]; then
+#        mv /dc/docker-compose.yaml ${docker_compose_path}
+#    fi
+#else
+#    echo "$(date) - Using built-in template ${MINIENV_PLATFORM}..."
+#    cp /platforms/${MINIENV_PLATFORM}/docker-compose.yml ${docker_compose_path}
+#    sed -i -e 's,$port,'${MINIENV_PLATFORM_PORT}',g' ${docker_compose_path}
+#    bash /platforms/${MINIENV_PLATFORM}/config.sh  ${docker_compose_path}
+#fi
+bash ./minienv-docker-compose-init.sh ${docker_compose_path}
 echo "$(date) - docker-compose path = ${docker_compose_path}"
 echo "$(date) - Getting DIND_IP_ADDRESS..."
 export DIND_IP_ADDRESS="$(ip route show | grep docker0 | awk '{print $NF}')"
