@@ -17,10 +17,6 @@ spec:
         backend:
           serviceName: minienv-api-service
           servicePort: 80
-      - path: /probot/*
-        backend:
-          serviceName: minienv-probot-service
-          servicePort: 80
   - host: "*.minikube.loc"
     http:
       paths:

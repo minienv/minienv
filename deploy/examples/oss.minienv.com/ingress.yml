@@ -4,11 +4,10 @@ metadata:
   name: minienv-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: gke.minienv.com
+  - host: oss.minienv.com
     http:
       paths:
       - path: /*
@@ -19,19 +18,10 @@ spec:
         backend:
           serviceName: minienv-api-service
           servicePort: 80
-      - path: /probot/*
-        backend:
-          serviceName: minienv-probot-service
-          servicePort: 80
-  - host: "*.gke.minienv.com"
+  - host: "*.oss.minienv.com"
     http:
       paths:
       - path: /*
         backend:
           serviceName: minienv-env-proxy-service
           servicePort: 80
-  tls:
-  - secretName: minienv-prod-tls-secret
-    hosts:
-    - gke.minienv.com
-    - "*.gke.minienv.com"

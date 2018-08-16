@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: minienv-api
-          image: localhost:5000/minienv/minienv-api-kube:0.1.0
+          image: localhost:5000/minienv/minienv-api:0.1.0
           resources:
             limits:
               memory: "256Mi"

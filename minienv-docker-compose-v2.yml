@@ -30,4 +30,4 @@ services:
     extra_hosts:
       - "dind:${DIND_IP_ADDRESS}"
     ports:
-      - "${MINIENV_PROXY_PORT}:80"
+      - "${MINIENV_APP_PROXY_PORT}:80"

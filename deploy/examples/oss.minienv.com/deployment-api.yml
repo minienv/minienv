@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: minienv-api
-          image: localhost:5000/minienv/minienv-api-kube:0.2.0-DEV
+          image: localhost:5000/minienv/minienv-api:0.2.0-DEV
           imagePullPolicy: Always
           resources:
             limits:
@@ -19,8 +19,6 @@ spec:
           env:
           - name: MINIENV_VERSION
             value: "0.2.0-DEV"
-          - name: MINIENV_IMAGE
-            value: "minienv/minienv:0.2.0-DEV"
           - name: MINIENV_VOLUME_STORAGE_CLASS
             value: "standard"
           - name: MINIENV_PROVISION_COUNT
