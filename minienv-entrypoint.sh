@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "$(date) - Starting minienv..."
+
 # Start Docker
 storage_driver=${MINIENV_STORAGE_DRIVER}
 if [[ -z  ${storage_driver} ]]; then
