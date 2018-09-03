@@ -7,9 +7,13 @@ RUN apk add --no-cache bash \
     git \
   && pip install docker-compose
 
+RUN mkdir -p /opt/minienv
+
 COPY minienv-entrypoint.sh \
      minienv-docker-compose-init.sh \
      minienv-docker-compose-v2.yml \
-     minienv-docker-compose-v3.yml /
+     minienv-docker-compose-v3.yml /opt/minienv/
 
-ENTRYPOINT ["/minienv-entrypoint.sh"]
+WORKDIR /opt/minienv/
+
+ENTRYPOINT ["/opt/minienv/minienv-entrypoint.sh"]

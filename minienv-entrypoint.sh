@@ -52,13 +52,14 @@ docker pull minienv/minienv-editor:${MINIENV_VERSION}
 docker rmi $(docker images | grep "<none>" | awk '{print $3}')
 
 # Clone repo
-rm -rf /dc
+cd /opt/minienv
+rm -rf ./dc
 if [[ -z ${MINIENV_GIT_BRANCH} ]]; then
-    git clone --single-branch ${MINIENV_GIT_REPO} --depth 1 /dc
+    git clone --single-branch ${MINIENV_GIT_REPO} --depth 1 ./dc
 else
-    git clone -b ${MINIENV_GIT_BRANCH} --single-branch ${MINIENV_GIT_REPO} --depth 1 /dc
+    git clone -b ${MINIENV_GIT_BRANCH} --single-branch ${MINIENV_GIT_REPO} --depth 1 ./dc
 fi
-docker_compose_path="/dc/docker-compose.yml"
+docker_compose_path="./dc/docker-compose.yml"
 bash ./minienv-docker-compose-init.sh ${docker_compose_path}
 echo "$(date) - docker-compose path = ${docker_compose_path}"
 echo "$(date) - Getting DIND_IP_ADDRESS..."
@@ -69,5 +70,6 @@ if [[ -z ${DIND_IP_ADDRESS} ]]; then
 fi
 echo "$(date) - DIND_IP_ADDRESS = $DIND_IP_ADDRESS"
 version=$(sed -n "s/^.*version.*\:.*\([0-9]\).*$/\1/p" ${docker_compose_path})
-mv ./minienv-docker-compose-v${version}.yml ./minienv-docker-compose.yml
-docker-compose -f ${docker_compose_path}  -f ./minienv-docker-compose.yml up --force-recreate
+cp ./minienv-docker-compose-v${version}.yml ./minienv-docker-compose.yml
+minenv_docker_compose_path="./minienv-docker-compose.yml"
+bash ./minienv-docker-compose-run.sh ${docker_compose_path} ${minenv_docker_compose_path}
