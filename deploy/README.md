@@ -6,9 +6,9 @@ To run minienv on Kubernetes you will need to install the following yml files:
 2. daemonset-registry.yml - This is a Docker Registry pull through cache for caching docker images used in environments
 3. daemonset-npm-proxy-cache.yml - This is a NPM proxy cache for caching npm modules used in environments
 4. deployment-api.yml - This is the minienv API. It contains the logic for provisioning and launching environments. You will need to customize this yml file for your environment. See below for more details.
-5. service-api.yml - This expose the minienv API on a NodePort, by default port 31112
+5. service-api.yml - This exposes the minienv API on a NodePort, by default port 31112
 6. deployment-web.yml - This is the minienv web application
-7. service-web.yml - This expose the minienv web application on a NodePort, by default port 31111
+7. service-web.yml - This exposes the minienv web application on a NodePort, by default port 31111
 
 ### Custom Configuration
 
@@ -48,7 +48,7 @@ You may need to change the following:
 
 ### Running on a Single Node Cluster
  
-Use the deployment-api.yml file in template/single-node-host-path as a guide for configuring minienv to run in a multi-node cluster.
+Use the deployment-api.yml file in template/single-node-host-path as a guide for configuring minienv to run in a single-node cluster.
 
 ### Examples
 

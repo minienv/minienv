@@ -1,13 +1,16 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment 
 metadata:
   name: minienv-probot-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-probot
   template:
     metadata:
       labels:
-        app: minienv-probot
+        name: minienv-probot
     spec:
       containers:
         - name: minienv-probot

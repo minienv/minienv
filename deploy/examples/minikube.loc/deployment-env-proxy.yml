@@ -1,13 +1,16 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment 
 metadata:
   name: minienv-env-proxy-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-env-proxy
   template:
     metadata:
       labels:
-        app: minienv-env-proxy
+        name: minienv-env-proxy
     spec:
       containers:
         - name: minienv-env-proxy

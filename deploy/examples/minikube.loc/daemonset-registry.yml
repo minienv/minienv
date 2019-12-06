@@ -1,14 +1,17 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
     app: minienv-registry-daemonset
   name: minienv-registry-daemonset
 spec:
+  selector:
+    matchLabels:
+      name: minienv-registry
   template:
     metadata:
       labels:
-        app: minienv-registry
+        name: minienv-registry
     spec:
       hostNetwork: true
       containers:

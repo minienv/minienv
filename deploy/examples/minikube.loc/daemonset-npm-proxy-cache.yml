@@ -1,14 +1,17 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   labels:
     app: minienv-npm-proxy-cache-daemonset
   name: minienv-npm-proxy-cache-daemonset
 spec:
+  selector:
+    matchLabels:
+      name: minienv-npm-proxy-cache
   template:
     metadata:
       labels:
-        app: minienv-npm-proxy-cache
+        name: minienv-npm-proxy-cache
     spec:
       hostNetwork: true
       containers:

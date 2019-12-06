@@ -1,13 +1,16 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment 
 metadata:
   name: minienv-web-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-web
   template:
     metadata:
       labels:
-        app: minienv-web
+        name: minienv-web
     spec:
       containers:
         - name: minienv-web

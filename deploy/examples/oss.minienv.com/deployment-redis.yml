@@ -1,13 +1,16 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment 
 metadata:
   name: minienv-redis-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-redis
   template:
     metadata:
       labels:
-        app: minienv-redis
+        name: minienv-redis
     spec:
       containers:
       - name: minienv-redis
