@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: minienv-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - host: oss.minienv.com
+    http:
+      paths:
+      - path: /(.*)
+        backend:
+          serviceName: minienv-web-service
+          servicePort: 80
+      - path: /api/(.*)
+        backend:
+          serviceName: minienv-api-service
+          servicePort: 80
+  - host: "*.oss.minienv.com"
+    http:
+      paths:
+      - path: /(.*)
+        backend:
+          serviceName: minienv-env-proxy-service
+          servicePort: 80

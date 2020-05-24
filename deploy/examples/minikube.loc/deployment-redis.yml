@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: minienv-redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-redis
+  template:
+    metadata:
+      labels:
+        name: minienv-redis
+    spec:
+      containers:
+      - name: minienv-redis
+        image: redis:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 6379

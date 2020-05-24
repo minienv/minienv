@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: minienv-env-proxy-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-env-proxy
+  template:
+    metadata:
+      labels:
+        name: minienv-env-proxy
+    spec:
+      containers:
+        - name: minienv-env-proxy
+          image: localhost:5000/minienv/minienv-proxy:0.2.0-DEV
+          imagePullPolicy: Always
+          env:
+          - name: MINIENV_ALLOW_ORIGIN
+            value: "https://gke.minienv.com"
+          - name: MINIENV_REDIS_ADDRESS
+            value: "minienv-redis-service:6379"
+          - name: MINIENV_REDIS_DB
+            value: "0"

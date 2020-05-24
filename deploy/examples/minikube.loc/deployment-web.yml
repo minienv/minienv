@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: minienv-web-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-web
+  template:
+    metadata:
+      labels:
+        name: minienv-web
+    spec:
+      containers:
+        - name: minienv-web
+          image: localhost:5000/minienv/minienv-web:0.2.0-DEV
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+          env:
+          - name: MINIENV_API_URL
+            value: "http://minikube.loc/api"
+          - name: MINIENV_GITHUB_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: minienv-api-secret
+                key: githubClientId

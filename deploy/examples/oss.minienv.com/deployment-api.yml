@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: minienv-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: minienv-api
+  template:
+    metadata:
+      labels:
+        name: minienv-api
+    spec:
+      containers:
+        - name: minienv-api
+          image: localhost:5000/minienv/minienv-api:0.2.0-DEV
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "256Mi"
+          env:
+          - name: MINIENV_VERSION
+            value: "0.2.0-DEV"
+          - name: MINIENV_VOLUME_STORAGE_CLASS
+            value: "standard"
+          - name: MINIENV_PROVISION_COUNT
+            value: "2"
+          - name: MINIENV_PROVISION_VOLUME_SIZE
+            value: "10Gi"
+          - name: MINIENV_PROVISION_IMAGES
+            value: "node:alpine,node:8"
+          # Whitelist is optional
+          - name: MINIENV_REPO_WHITELIST
+            value: "Master Branch|https://github.com/minienv/minienv-example|master,Test Branch|https://github.com/minienv/minienv-example|test"
+          - name: MINIENV_ALLOW_ORIGIN
+            value: "http://oss.minienv.com"
+          - name: KUBERNETES_TOKEN_PATH
+            value: "/var/run/secrets/kubernetes.io/serviceaccount/token"
+          - name: MINIENV_NODE_HOST_NAME
+            value: "oss.minienv.com"
+          - name: MINIENV_NODE_HOST_PROTOCOL
+            value: "http"
+          - name: MINIENV_NAMESPACE
+            value: "minienv"
+          - name: MINIENV_STORAGE_DRIVER
+            value: "overlay2"
+          - name: MINIENV_REDIS_ADDRESS
+            value: "minienv-redis-service:6379"
+          - name: MINIENV_REDIS_DB
+            value: "0"
